@@ -1,6 +1,5 @@
 class Domino(object):
 
-
     def __init__(self, gauche, droit):
         self.g = gauche
         self.d = droit
