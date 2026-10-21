@@ -1,3 +1,4 @@
 
-print("hello")
-print("bonjour")
+
+
+a = Domino(1,2)

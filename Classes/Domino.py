@@ -4,15 +4,19 @@ class Domino(object):
         self.g = gauche
         self.d = droit
 
-    def est_double(self):
+    def is_double(self):
         return self.g==self.d
 
-    def sens(self):
+    def turn(self):
         self.g=self.d
         self.d=self.g
         return self
 
-    def d
+    def score(self):
+        return self.g+self.d
+
+    def possible(self,domino):
+        return self.d in (domino.g,domino.d ) or
 
 
 
