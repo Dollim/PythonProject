@@ -19,6 +19,8 @@ class Domino(object):
         return self.d in (domino.g,domino.d ) or
 
 
+print('prout')
+
 
 
 
