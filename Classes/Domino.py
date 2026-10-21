@@ -12,7 +12,7 @@ class Domino(object):
         self.d=self.g
         return self
 
-    def
+    def d
 
 
 
