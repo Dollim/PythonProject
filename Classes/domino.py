@@ -19,10 +19,4 @@ class Domino(object):
         return self.d in (domino.g,domino.d )
 
 
-print('prout')
-
-
-#hiiii
-
-
 

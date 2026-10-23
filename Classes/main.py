@@ -1,3 +1,3 @@
-print("hey")
+class Main():
 
-youhouuuuuu
+    def __init__
