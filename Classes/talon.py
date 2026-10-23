@@ -7,7 +7,9 @@ class Talon:
         shuffle(self.talon)
 
     def piocher(self):
-        return self.talon.pop(0)
+        if len(self.talon)>0:
+            return self.talon.pop(0)
+        return None
 
     def __str__(self):
         t=""
@@ -17,5 +19,9 @@ class Talon:
         t+=str(self.talon[-1])
         return t
 
-t=Talon(7)
-print(t)
+
+if __name__== "__main__":
+    t=Talon(7)
+    print(t)
+    t.piocher()
+    print(t)
