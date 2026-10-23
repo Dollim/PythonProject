@@ -1,3 +1,3 @@
-print("hey")
+class Main():
 
-youhouuu hello bye
+    
