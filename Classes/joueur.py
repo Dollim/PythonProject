@@ -1,3 +1,4 @@
+
 class Joueur():
 
     def __init__(self, n):
@@ -7,6 +8,4 @@ class Joueur():
     def piocher(self,talon):
         return self.main.append(talon.piocher())
 
-
-
-
+#fdfzzfffdf
