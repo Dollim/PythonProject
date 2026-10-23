@@ -3,8 +3,16 @@ from random import shuffle
 
 class Talon:
     def __init__(self,mode=7):
-        self.talon=[Domino(i,j) for i in range(0,7) for j in range(i,7)]
+        self.talon=[Domino(i,j) for i in range(0,mode) for j in range(i,mode)]
         shuffle(self.talon)
 
-    def piocher(self,talon):
-        pass
+    def piocher(self):
+        return self.talon.pop(0)
+
+    def __str__(self):
+        t=""
+        if len(self.talon)>1:
+            for e in self.talon[:-2]:
+                t+=str(e)+" , "
+        t+=str(self.talon[-1])
+        return t
