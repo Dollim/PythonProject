@@ -7,8 +7,6 @@ class Joueur:
         self.main=[]
         self.manches_gagnees=0
 
-    def distibution_initiale(self):
-        pass
     def piocher(self,talon):
         return self.main.append(talon.piocher())
 
@@ -22,6 +20,8 @@ class Joueur:
                 L.append(e)
         if L!=[]:
             return min(L)
+        else:
+            return None
 
 
 
