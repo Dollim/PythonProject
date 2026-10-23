@@ -18,5 +18,11 @@ class Domino(object):
     def possible(self,domino):
         return self.d in (domino.g,domino.d )
 
+if __name__== "__main__"():
+    dr=Domino(3,7)
+    de=Domino(6,3)
+    dr.turn
+    print(dr)
+
 
 
