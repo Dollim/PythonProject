@@ -21,7 +21,11 @@ class Joueur:
         else:
             return None
 
-    def est_present
+    def est_present(self,d):
+        return d in self.main
+
+
+
 
 
 Mayeul=Joueur(1)
