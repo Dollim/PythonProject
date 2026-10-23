@@ -19,6 +19,9 @@ for _ in range(mode):
     Joueur(n).main.append(piocher(talon))
     Joueur(n).main.append(piocher(talon))
 
+#
+
+
 
 
 
