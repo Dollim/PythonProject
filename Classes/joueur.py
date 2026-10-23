@@ -8,7 +8,7 @@ class Joueur:
         self.manches_gagnees=0
 
     def piocher(self,talon):
-        return self.main.append(talon.piocher())
+        self.main.append(Talon.piocher(talon))
 
     def a_gagne(self):
         self.manches_gagnees+=1
@@ -31,5 +31,9 @@ if __name__== "__main__":
     joueur1=Joueur("Mayeul")
     print(joueur1.nom)
     talon=Talon(mode=7)
-    joueur1.piocher
+    print(talon)
+    print(joueur1.main)
+    Joueur.piocher(joueur1,talon)
+    print(talon)
+    print(joueur1.main)
 
