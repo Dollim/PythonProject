@@ -30,10 +30,10 @@ class Joueur:
 if __name__== "__main__":
     joueur1=Joueur("Mayeul")
     print(joueur1.nom)
-    talon=Talon(mode=7)
-    print(talon)
+    pioche=Talon(mode=7)
+    print(pioche)
     print(joueur1.main)
-    Joueur.piocher(joueur1,talon)
-    print(talon)
+    Joueur.piocher(joueur1,pioche)
+    print(pioche)
     print(joueur1.main)
 
