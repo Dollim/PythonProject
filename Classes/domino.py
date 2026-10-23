@@ -8,8 +8,7 @@ class Domino(object):
         return self.g==self.d
 
     def turn(self):
-        self.g=self.d
-        self.d=self.g
+        self.g , self.d = self.d,self.g
         return self
 
     def score(self):
@@ -18,11 +17,15 @@ class Domino(object):
     def possible(self,domino):
         return self.d in (domino.g,domino.d )
 
-if __name__== "__main__"():
+    def __str__(self):
+        return f"({self.g}, {self.d})"
+
+if __name__== "__main__":
     dr=Domino(3,7)
     de=Domino(6,3)
-    dr.turn
+    dr.turn()
     print(dr)
+    print(de.possible(dr))
 
 
 

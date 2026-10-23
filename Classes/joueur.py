@@ -23,6 +23,7 @@ class Joueur:
         else:
             return None
 
+    def est_present
 
 
 Mayeul=Joueur(1)
