@@ -1,16 +1,26 @@
-from Classes.main import Main
+from Classes.mains import Main
 from Classes.joueur import Joueur
 from Classes.domino import  Domino
 from Classes.talon import Talon
-import random
+from random import shuffle
+
+#On nomme les deux joueurs
+
+###
+
+#On créé et on distribue les dominos aux joueurs, puis on met le reste dans le talon
+
+mode = int(input("Veuillez choisir le mode de jeu :"))
+
+##Initialisation du talon selon le mode choisi
+talon = Talon(mode)
+shuffle(talon)
+for _ in range(mode):
+    Joueur(n).main.append(piocher(talon))
+    Joueur(n).main.append(piocher(talon))
 
 
-# Générer les dominos et les joueurs
 
-plateau=[Domino(i,j) for i in range(0,7) for j in range(i,7)]
-random.shuffle(plateau)
-Joueur(n).main = [pop(plateau) for _ in range(7)]
-talon
 
 
 
