@@ -20,15 +20,13 @@ for _ in range(7):
 print(f'Voici la main du joueur 1 : {j1.main}')
 print(f'Voici la main du joueur 1 : {j2.main}')
 
-double_max = -float('inf')
-first_to_play = j1
-for i in range(mode):
-    if j1.est_present(Domino(i,i)) and i>double_max:
-        double_max = i
-        first_to_play = j1
-    if j2.est_present(Domino(i,i)) and i>double_max:
-        double_max = i
-        first_to_play = j2
+#On détermine le joueur qui commence
+
+
+
+
+
+
 
 
 

@@ -26,6 +26,17 @@ class Joueur:
     def est_present(self,d):
         return d in self.main
 
+    def first_to_play(self, mode):
+        double_max = -float('inf')
+        first_to_play = random(j1,j2)
+        for i in range(mode):
+            if j1.est_present(Domino(i, i)) and i > double_max:
+                double_max = i
+                first_to_play = j1
+            if j2.est_present(Domino(i, i)) and i > double_max:
+                double_max = i
+                first_to_play = j2
+
 
 if __name__== "__main__":
     joueur1=Joueur("Mayeul")
