@@ -15,13 +15,9 @@ class Domino(object):
     def score(self):
         return self.g+self.d
 
-    def possible(self,domino):
+    def possible_link(self,domino):
         return self.d in (domino.g,domino.d) or self.g in (domino.g,domino.d)
 
-
-
-
-fdsfd
 
 
 
