@@ -1,5 +1,3 @@
-from random import randint
-
 class Joueur:
 
     def __init__(self, n):

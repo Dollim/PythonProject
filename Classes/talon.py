@@ -16,3 +16,6 @@ class Talon:
                 t+=str(e)+" , "
         t+=str(self.talon[-1])
         return t
+
+t=Talon(7)
+print(t)
