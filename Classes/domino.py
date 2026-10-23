@@ -16,7 +16,7 @@ class Domino(object):
         return self.g+self.d
 
     def possible(self,domino):
-        return self.d in (domino.g,domino.d ) or
+        return self.d in (domino.g,domino.d )
 
 
 print('prout')
