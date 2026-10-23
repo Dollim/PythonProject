@@ -8,9 +8,7 @@ class Talon:
 
     def piocher(self):
         if len(self.talon)>0:
-            d=self.talon[0]
-            self.talon=self.talon[1:]
-            return d
+            return self.talon.pop(0)
         return None
 
     def __str__(self):

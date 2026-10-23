@@ -35,5 +35,5 @@ if __name__== "__main__":
     print(joueur1.main)
     Joueur.piocher(joueur1,pioche)
     print(pioche)
-    print(joueur1.main)
+    print([str(joueur1.main[i]) for i in range(len(joueur1.main))])     #on verifie que la pioche fonctionne
 
