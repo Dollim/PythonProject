@@ -21,7 +21,6 @@ class Talon:
 
 
 if __name__== "__main__":
-    t=Talon(7)
-    print(t)
-    t.piocher()
-    print(t)
+    pioche=Talon(7)
+    pioche.piocher()
+    print(pioche)

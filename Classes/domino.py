@@ -15,10 +15,10 @@ class Domino(object):
         return self.g+self.d
 
     def possible(self,domino):
-        return self.d in (domino.g,domino.d )
+        return self.d in (domino.g,domino.d)
 
     def __str__(self):
-        return f"({self.g}, {self.d})"
+        return f"[{self.g} 〡 {self.d}]"
 
 if __name__== "__main__":
     dr=Domino(3,7)

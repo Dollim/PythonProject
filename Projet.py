@@ -11,15 +11,19 @@ from random import shuffle
 #On créé et on distribue les dominos aux joueurs, puis on met le reste dans le talon
 
 mode = int(input("Veuillez choisir le mode de jeu :"))
+j1=Joueur(str(input("Comment se nomme le joueur 1 ? :")))
+j2=Joueur(str(input("Comment se nomme le joueur 2 ? :")))
 
 ##Initialisation du talon selon le mode choisi
-talon = Talon(mode)
-shuffle(talon)
+pioche = Talon(mode)
+shuffle(pioche)
 for _ in range(mode):
-    Joueur(n).main.append(piocher(talon))
-    Joueur(n).main.append(piocher(talon))
+    j1.main.append(piocher(pioche))
+    j2.main.append(piocher(pioche))
 
-#
+print
+
+
 
 
 
