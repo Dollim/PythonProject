@@ -8,4 +8,4 @@ class Joueur():
     def piocher(self,talon):
         return self.main.append(talon.piocher())
 
-    def
+#fdfzzfffdf
