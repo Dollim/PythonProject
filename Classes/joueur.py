@@ -32,9 +32,9 @@ if __name__== "__main__":
     joueur1=Joueur("Mayeul")
     print(joueur1.nom)
     talon=Talon(mode=7)
+    print(talon)
     for i in range(7):
-        joueur1.piocher(talon)
-        print(joueur1.main)
+        print(joueur1.piocher(talon))
     print(joueur1.est_present(Domino(6,6)))
 
 
