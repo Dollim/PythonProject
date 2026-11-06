@@ -26,6 +26,12 @@ class Joueur:
     def est_present(self,d):
         return d in self.main
 
+    """def main_valide(self,mode):          #verifie la validité de la main pour commencer à jouer
+        for i in range(mode):
+            taille_fam=0
+            for e in .....   a finir ..."""
+
+
     def first_to_play(self, mode):
         double_max = -float('inf')
         first_to_play = random(j1,j2)

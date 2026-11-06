@@ -13,12 +13,20 @@ j2=Joueur(str(input("Comment se nomme le joueur 2 ? :")))
 
 ##Initialisation du talon selon le mode choisi
 pioche = Talon(mode)
-for _ in range(7):
-    j1.main.append(Talon.piocher(pioche))
-    j2.main.append(Talon.piocher(pioche))
 
-print(f'Voici la main du joueur 1 : {[str(j1.main[i]) for i in range(len(j1.main))]}')
-print(f'Voici la main du joueur 2 : {[str(j2.main[i]) for i in range(len(j2.main))]}')  # Attention ici je print cette expression  compliquée car {j1.main} renvoie une liste de <hfefbzbfa>
+distrib_valide=False
+while distrib_valide == False:
+    for _ in range(7):
+        j1.main.append(Talon.piocher(pioche))
+        j2.main.append(Talon.piocher(pioche))
+    if True:    # a remplacer
+        distrib_valide=True   # a finir
+
+
+
+
+print(f'Voici la main de {j1.nom} : {[str(j1.main[i]) for i in range(len(j1.main))]}')
+print(f'Voici la main de {j2.nom} : {[str(j2.main[i]) for i in range(len(j2.main))]}')  # Attention ici je print cette expression  compliquée car {j1.main} renvoie une liste de <hfefbzbfa>
 
 
 
