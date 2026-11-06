@@ -4,5 +4,5 @@ class Main():
         self.list= list
 
     def retirer(self,Domino):
-
+        pass
 

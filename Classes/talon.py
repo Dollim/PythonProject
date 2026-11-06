@@ -1,4 +1,4 @@
-from domino import Domino
+from Classes.domino import Domino
 from random import shuffle
 
 class Talon:

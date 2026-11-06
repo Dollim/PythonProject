@@ -1,4 +1,4 @@
-from talon import Talon
+from Classes.talon import Talon
 
 class Joueur:
 
