@@ -34,7 +34,9 @@ print(f'Voici la main de {j2.nom} : {[(j2.main[i]) for i in range(len(j2.main))]
 
 #On détermine le joueur qui commence
 
-a=Joueur.first_to_play(j1,j2,mode)
+prems=j1
+if j1.plus_grand_double(mode)>j2.plus_grand_double(mode):
+
 
 print("le 1e joueur est "+a.nom)
 
