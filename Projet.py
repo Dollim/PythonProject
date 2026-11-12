@@ -36,7 +36,6 @@ print(f'Voici la main de {j2.nom} : {[(j2.main[i]) for i in range(len(j2.main))]
 
 Joueur.attribution_ordre(j1,j2,mode)
 
-
 if j1.ordre == 1:
     print("le joueur est "+j1.nom)
 else :

@@ -50,19 +50,22 @@ class Joueur:
                 double_max = i
         if double_max == -1:
             return None
-        return double_max
+        return double_max, Domino(double_max, double_max)
 
     def score_max(self,mode):
         score=0
+        domino_score_max= Domino(0,0)
         for d in self.main:
             if d.score()>score:
                 score = d.score()
-        return score
+                domino_score_max=d
+        return score,domino_score_max
 
     def attribution_ordre(self,j2,mode):
         if self.plus_grand_double(mode) > j2.plus_grand_double(mode):
             self.ordre = 1
             j2.ordre = 2
+            return plus_grand_double(mode)
         else:
             self.ordre = 2
             j2.ordre = 1
@@ -73,4 +76,5 @@ class Joueur:
             else:
                 self.ordre = 2
                 j2.ordre = 1
+
 
