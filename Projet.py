@@ -19,8 +19,10 @@ while distrib_valide == False:
     for _ in range(7):
         j1.main.append(Talon.piocher(pioche))
         j2.main.append(Talon.piocher(pioche))
-    if True:    # a remplacer
-        distrib_valide=True   # a finir
+    if Joueur.main_valide(j1,mode) and Joueur.main_valide(j2,mode):
+        distrib_valide=True
+    else:
+        print("Main invalide, redistribution")
 
 
 

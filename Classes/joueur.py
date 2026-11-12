@@ -26,10 +26,15 @@ class Joueur:
     def est_present(self,d):
         return d in self.main
 
-    """def main_valide(self,mode):          #verifie la validité de la main pour commencer à jouer
+    def main_valide(self,mode):          #verifie la validité de la main pour commencer à jouer
         for i in range(mode):
             taille_fam=0
-            for e in .....   a finir ..."""
+            for d in self.main:
+                if i in [d.d,d.g]:
+                    taille_fam+=1
+            if taille_fam>=5:
+                return False
+        return True
 
 
     def first_to_play(self, mode):
