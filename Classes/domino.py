@@ -1,3 +1,5 @@
+from Classes.plateau import Plateau
+
 class Domino(object):
 
     def __init__(self, gauche, droit):
@@ -24,6 +26,12 @@ class Domino(object):
 
     def __repr__(self):
         return f"[{self.g} 〡 {self.d}]"
+
+    def posable(self,plateau,cote):
+        if self.g == plateau.p[-1].cote:
+            return True
+        if self.d == plateau.p[-1].cote:
+            return False
 
 if __name__== "__main__":
     dr=Domino(3,7)
