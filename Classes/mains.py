@@ -1,5 +1,6 @@
 from Classes.domino import Domino
-from
+from Classes.talon import Talon
+from Classes.joueur import Joueur
 
 class Main():
 
@@ -9,13 +10,13 @@ class Main():
     def retirer(self,Domino):
         pass
 
-    def plus_grand_double(self,list,mode):
-        meilleur_double = Domino(0,0)
-        for i in range(len(list)):
-            if list[i].is_double() and list[i].score > meilleur_double.score:
-                meilleur_double = list[i]
-        return meilleur_double
-
+if __name__== "__main__":
+    pioche=Talon()
+    print(pioche)
+    j1 = Joueur('Thonny')
+    for _ in range(7):
+        j1.main.append(Talon.piocher(pioche))
+    j1.main.plus_grand_double()
 
 
 

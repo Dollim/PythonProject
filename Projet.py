@@ -14,10 +14,11 @@ j2=Joueur(str(input("Comment se nomme le joueur 2 ? :")))
 ##Initialisation du talon selon le mode choisi
 pioche = Talon(mode)
 
+taille_main_depart=7
 
 distrib_valide=False
 while distrib_valide == False:
-    for _ in range(7):
+    for _ in range(taille_main_depart):
         j1.main.append(Talon.piocher(pioche))
         j2.main.append(Talon.piocher(pioche))
     if Joueur.main_valide(j1,mode) and Joueur.main_valide(j2,mode):         #Ce paragraphe ditribu jusqu'a ce que la main soit valide
