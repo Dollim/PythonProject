@@ -1,5 +1,6 @@
 from Classes.talon import Talon
 from Classes.domino import Domino
+from random import random
 
 class Joueur:
 
@@ -38,7 +39,7 @@ class Joueur:
         return True
 
 
-    def first_to_play(self, mode):
+    def player1(self,j1,j2, mode):
         double_max = -float('inf')
         first_to_play = random(j1,j2)
         for i in range(mode):
@@ -49,20 +50,11 @@ class Joueur:
                 double_max = i
                 first_to_play = j2
 
-    def plus_grand_double(self):
-        meilleur_double = Domino(0,0)
-        for i in range(len(self.main)):
-            if self.main[i].is_double() and self.main[i].score > meilleur_double.score:
-                meilleur_double = self.main[i]
-        return meilleur_double
 
 if __name__== "__main__":
     joueur1=Joueur("Mayeul")
-    print(joueur1.nom)
     pioche=Talon(mode=7)
-    print(pioche)
-    print(joueur1.main)
-    Joueur.piocher(joueur1,pioche)
-    print(pioche)
-    print([str(joueur1.main[i]) for i in range(len(joueur1.main))])     #on verifie que la pioche fonctionne
+    for _ in range(7):
+        joueur1.main.append(Talon.piocher(pioche))
+     #on verifie que la pioche fonctionne
 
