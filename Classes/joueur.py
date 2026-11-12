@@ -79,4 +79,4 @@ class Joueur:
 
 
     def placer(self,i):
-        return(self.main.pop(i-1))
+        return(self.main.pop(i))

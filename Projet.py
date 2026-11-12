@@ -55,10 +55,20 @@ else:
 while partie_en_cours:
     print("Tour de "+j_actif.nom)
     print("Plateau:    ",plateau)
+    print("Main:    ",str(j_actif.main))
     indice=int(input("Donnez l'indice du domino que vous voulez jouer"))-1
     coté=input("Où voulez vous le placer (d/g) ?")
-    if plateau.posable
+
+    if Domino.posable(j_actif.main[indice],plateau,coté):
         domino=j_actif.placer(indice)
+        plateau.placer(domino,coté)
+
+
+    if j_actif==j1:
+        j_actif==j2
+    else:
+        j_actif=j1
+
 
 
 
