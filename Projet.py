@@ -2,7 +2,7 @@ from Classes.mains import Main
 from Classes.joueur import Joueur
 from Classes.domino import  Domino
 from Classes.talon import Talon
-from random import shuffle
+from Classes.plateau import Plateau
 
 mode = int(input("Veuillez choisir le mode de jeu (nb de chiffres possibles:)"))
 
@@ -10,8 +10,9 @@ mode = int(input("Veuillez choisir le mode de jeu (nb de chiffres possibles:)"))
 j1=Joueur(str(input("Comment se nomme le joueur 1 ? :")))
 j2=Joueur(str(input("Comment se nomme le joueur 2 ? :")))
 
-##Initialisation du talon selon le mode choisi
+##Initialisation du plateau, et du talon selon le mode choisi
 pioche = Talon(mode)
+plateau=Plateau()
 
 # Distribution des mains de départ
 taille_main_depart=7
@@ -52,9 +53,12 @@ if j1.ordre==1:
 else:
     j_actif=j2
 while partie_en_cours:
-
     print("Tour de "+j_actif.nom)
-
+    print("Plateau:    ",plateau)
+    indice=int(input("Donnez l'indice du domino que vous voulez jouer"))-1
+    coté=input("Où voulez vous le placer (d/g) ?")
+    if plateau.posable
+        domino=j_actif.placer(indice)
 
 
 

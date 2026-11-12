@@ -78,3 +78,5 @@ class Joueur:
                 j2.ordre = 1
 
 
+    def placer(self,i):
+        return(self.main.pop(i-1))
