@@ -51,7 +51,7 @@ if j1.plus_grand_double(mode)==j2.plus_grand_double(mode):
 if j1.ordre == 1:
     print("le joueur est "+j1.nom)
 else :
-    print("le joueur est " +j2.nom)
+    print("le joueur est "+j2.nom)
 
 
 
@@ -66,6 +66,7 @@ else:
 while partie_en_cours:
 
     print("Tour de "+j_actif.nom)
+
 
 
 
