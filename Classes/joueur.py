@@ -1,6 +1,7 @@
 from Classes.talon import Talon
 from Classes.domino import Domino
 from random import random
+from Classes.plateau import Plateau
 
 class Joueur:
 
