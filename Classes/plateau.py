@@ -15,11 +15,7 @@ class Plateau():
         res=str(self.p)
         return res[1:-1].replace("'","")
 
-    def posable(self,domino,cote):
-        if domino.g == self.p[-1].cote:
-            return True
-        if domino.d == self.p[-1].cote:
-            return False
+
 
 if __name__=="__main__":
     p=Plateau()
