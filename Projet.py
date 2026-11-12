@@ -66,7 +66,7 @@ while partie_en_cours:
 
     if j_actif==j1:
         j_actif==j2
-    else:a
+    else:
         j_actif=j1
 
 

@@ -83,3 +83,8 @@ class Joueur:
 
     def placer(self,i):
         return(self.main.pop(i))
+
+    def victoire(self,talon):
+        if len(talon)==0
+
+        return len(self.main)==0
