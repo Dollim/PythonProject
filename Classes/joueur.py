@@ -1,4 +1,5 @@
 from Classes.talon import Talon
+from Classes.domino import Domino
 
 class Joueur:
 
@@ -48,6 +49,12 @@ class Joueur:
                 double_max = i
                 first_to_play = j2
 
+    def plus_grand_double(self):
+        meilleur_double = Domino(0,0)
+        for i in range(len(self.main)):
+            if self.main[i].is_double() and self.main[i].score > meilleur_double.score:
+                meilleur_double = self.main[i]
+        return meilleur_double
 
 if __name__== "__main__":
     joueur1=Joueur("Mayeul")
