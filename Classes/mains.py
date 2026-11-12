@@ -10,14 +10,8 @@ class Main():
     def retirer(self,Domino):
         pass
 
-if __name__== "__main__":
-    pioche=Talon()
-    print(pioche)
-    j1 = Joueur('Thonny')
-    for _ in range(7):
-        j1.main.append(Talon.piocher(pioche))
-    j1.main.plus_grand_double()
-
+    def __str__(self):
+        pass
 
 
 

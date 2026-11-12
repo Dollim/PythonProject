@@ -1,6 +1,7 @@
 from Classes.domino import Domino
 from random import shuffle
 
+
 class Talon:
     def __init__(self,mode=7):
         self.talon=[Domino(i,j) for i in range(0,mode) for j in range(i,mode)]
@@ -20,6 +21,3 @@ class Talon:
         return t
 
 
-if __name__== "__main__":
-    pioche=Talon(7)
-    print(pioche.pop(0))

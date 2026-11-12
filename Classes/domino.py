@@ -17,7 +17,7 @@ class Domino(object):
     def possible(self,domino):
         return self.d in (domino.g,domino.d) or self.g in (domino.g,domino.d)
 
-    def __str__(self):
+    def __repr__(self):
         return f"[{self.g} 〡 {self.d}]"
 
 if __name__== "__main__":

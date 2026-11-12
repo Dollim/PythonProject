@@ -4,8 +4,7 @@ from Classes.domino import  Domino
 from Classes.talon import Talon
 from random import shuffle
 
-
-mode = int(input("Veuillez choisir le mode de jeu (nb de chiffres possibles:"))
+mode = int(input("Veuillez choisir le mode de jeu (nb de chiffres possibles:)"))
 
 #On nomme les deux joueurs
 j1=Joueur(str(input("Comment se nomme le joueur 1 ? :")))
@@ -26,15 +25,11 @@ while distrib_valide == False:
     else:
         print("Main invalide, redistribution")
 
-print(f'Voici la main de {j1.nom} : {[str(j1.main[i]) for i in range(len(j1.main))]}')
-print(f'Voici la main de {j2.nom} : {[str(j2.main[i]) for i in range(len(j2.main))]}')
+print(f'Voici la main de {j1.nom} : {[(j1.main[i]) for i in range(len(j1.main))]}')
+print(f'Voici la main de {j2.nom} : {[(j2.main[i]) for i in range(len(j2.main))]}')
 # Attention ici je print cette expression  compliquée car {j1.main} renvoie une liste de <hfefbzbfa>
 
-
 #On détermine le joueur qui commence
-
- j1.main
-
 
 
 
