@@ -4,6 +4,11 @@ class Domino(object):
         self.g = gauche
         self.d = droit
 
+    def __eq__(self, autre):
+        if not isinstance(autre, Domino):
+            return False
+        return (self.g == autre.g and self.d == autre.d) or (self.g == autre.d and self.d == autre.g)
+
     def is_double(self):
         return self.g==self.d
 
