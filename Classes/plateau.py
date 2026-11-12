@@ -16,7 +16,7 @@ class Plateau():
         return res[1:-1].replace("'","")
 
     def posable(self,domino,cote):
-
+        pass
 
 if __name__=="__main__":
     p=Plateau()
