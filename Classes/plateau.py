@@ -5,17 +5,21 @@ class Plateau():
     def __init__(self):
         self.p=[]
 
-    def placer(self,domino,coté="d"):       # coté peut prendre d (droite) ou g (gauche)
-        if coté=="d":
+    def placer(self,domino,cote):       # coté peut prendre d (droite) ou g (gauche)
+        if cote=="droite":
             self.p.append(domino)
-        elif coté=="g":
+        elif cote=="gauche":
             self.p.insert(0,domino)
 
     def __str__(self):
         res=str(self.p)
         return res[1:-1].replace("'","")
 
-
+    def posable(self,domino,cote):
+        if domino.g == self.p[-1].cote:
+            return True
+        if domino.d == self.p[-1].cote:
+            return False
 
 if __name__=="__main__":
     p=Plateau()

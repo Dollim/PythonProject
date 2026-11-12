@@ -52,7 +52,7 @@ if j1.plus_grand_double(mode)==j2.plus_grand_double(mode):
 if j1.ordre == 1:
     print("le joueur est "+j1.nom)
 else :
-    print("le joueur est " +j2.nom)
+    print("le joueur est "+j2.nom)
 
 
 
@@ -69,6 +69,7 @@ while partie_en_cours:
     print("Plateau:    ",plateau)
     indice=int(input("Donnez l'indice du domino que vous voulez jouer"))
     coté=input("Où voulez vous le placer (d/g) ?")
+
 
 
 
