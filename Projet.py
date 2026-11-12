@@ -35,14 +35,14 @@ print(f'Voici la main de {j2.nom} : {[(j2.main[i]) for i in range(len(j2.main))]
 
 #On détermine le joueur qui commence
 
-Joueur.attribution_ordre(j1,j2,mode)
+domino_start=Joueur.attribution_ordre(j1,j2,mode)
 
 if j1.ordre == 1:
-    print("le joueur est "+j1.nom)
+    print("le joueur qui commence est "+j1.nom)
 else :
-    print("le joueur est "+j2.nom)
+    print("le joueur commence est "+j2.nom)
 
-
+print(domino_start)
 
 ### DEFINITION D'UN TOUR
 partie_en_cours=True
@@ -57,7 +57,7 @@ while partie_en_cours:
     print("Plateau:    ",plateau)
     indice=int(input("Donnez l'indice du domino que vous voulez jouer"))-1
     coté=input("Où voulez vous le placer (d/g) ?")
-    if plateau.posable
+    if plateau.posable:
         domino=j_actif.placer(indice)
 
 
