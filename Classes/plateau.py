@@ -12,13 +12,13 @@ class Plateau():
             self.p.insert(0,domino)
 
     def __str__(self):
-        res=str(self.p[0])
-        return res
+        res=str(self.p)
+        return res[1:-1].replace("'","")
 
 
 
 if __name__=="__main__":
     p=Plateau()
-    print(p.p)
     Plateau.placer(p,Domino(4,5))
+    Plateau.placer(p, Domino(3, 5))
     print(p)
