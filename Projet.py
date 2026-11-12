@@ -76,5 +76,3 @@ while partie_en_cours:
 
 
 
-
-
