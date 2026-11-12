@@ -34,19 +34,8 @@ print(f'Voici la main de {j2.nom} : {[(j2.main[i]) for i in range(len(j2.main))]
 
 #On détermine le joueur qui commence
 
-if j1.plus_grand_double(mode)>j2.plus_grand_double(mode):
-    j1.ordre = 1
-    j2.ordre = 2
-else:
-    j1.ordre = 2
-    j2.ordre = 1
-if j1.plus_grand_double(mode)==j2.plus_grand_double(mode):
-    if j1.score_max>j2.score_max:
-        j1.ordre = 1
-        j2.ordre = 2
-    else:
-        j1.ordre = 2
-        j2.ordre = 1
+Joueur.attribution_ordre(j1,j2,mode)
+
 
 if j1.ordre == 1:
     print("le joueur est "+j1.nom)
@@ -66,7 +55,6 @@ else:
 while partie_en_cours:
 
     print("Tour de "+j_actif.nom)
-
 
 
 

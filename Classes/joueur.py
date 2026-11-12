@@ -59,3 +59,18 @@ class Joueur:
                 score = d.score()
         return score
 
+    def attribution_ordre(self,j2,mode):
+        if self.plus_grand_double(mode) > j2.plus_grand_double(mode):
+            self.ordre = 1
+            j2.ordre = 2
+        else:
+            self.ordre = 2
+            j2.ordre = 1
+        if self.plus_grand_double(mode) == j2.plus_grand_double(mode):
+            if self.score_max > j2.score_max:
+                self.ordre = 1
+                j2.ordre = 2
+            else:
+                self.ordre = 2
+                j2.ordre = 1
+
