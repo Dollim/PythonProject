@@ -28,10 +28,9 @@ class Domino(object):
         return f"[{self.g} 〡 {self.d}]"
 
     def posable(self,plateau,cote):
-        if self.g == plateau.p[-1].cote:
+        if self.g == plateau.p[-1].cote or self.d == plateau.p[-1].cote:
             return True
-        if self.d == plateau.p[-1].cote:
-            return False
+        return False
 
 if __name__== "__main__":
     dr=Domino(3,7)
