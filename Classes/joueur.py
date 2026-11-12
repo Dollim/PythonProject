@@ -1,6 +1,7 @@
 from Classes.talon import Talon
 from Classes.domino import Domino
 from random import random
+from Classes.plateau import Plateau
 
 class Joueur:
 
@@ -8,6 +9,10 @@ class Joueur:
         self.nom = n
         self.main=[]
         self.manches_gagnees=0
+        self.ordre=0
+
+    def __eq__(self,j2):
+        return self.nom==j2.nom and self.main==j2.main and self.manche_gagnees==j2.manches_gagnees
 
     def piocher(self,talon):
         self.main.append(Talon.piocher(talon))
