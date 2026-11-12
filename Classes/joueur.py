@@ -59,3 +59,5 @@ class Joueur:
                 score = d.score()
         return score
 
+    def placer(self,i):
+        return(self.main.pop(i-1))
