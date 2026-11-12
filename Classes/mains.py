@@ -10,9 +10,6 @@ class Main():
     def retirer(self,Domino):
         pass
 
-    def __str__(self):
-        pass
-
 
 
 
