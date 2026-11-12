@@ -65,17 +65,20 @@ class Joueur:
         if self.plus_grand_double(mode) > j2.plus_grand_double(mode):
             self.ordre = 1
             j2.ordre = 2
-            return plus_grand_double(mode)
-        else:
+            return self.plus_grand_double(mode)[1]
+        elif self.plus_grand_double(mode) < j2.plus_grand_double(mode):
             self.ordre = 2
             j2.ordre = 1
-        if self.plus_grand_double(mode) == j2.plus_grand_double(mode):
+            return j2.plus_grand_double(mode)[1]
+        elif self.plus_grand_double(mode) == j2.plus_grand_double(mode):
             if self.score_max > j2.score_max:
                 self.ordre = 1
                 j2.ordre = 2
+                return self.score_max(mode)[1]
             else:
                 self.ordre = 2
                 j2.ordre = 1
+                return j2.score_max(mode)[1]
 
 
     def placer(self,i):
