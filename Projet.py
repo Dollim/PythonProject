@@ -34,8 +34,9 @@ print(f'Voici la main de {j2.nom} : {[(j2.main[i]) for i in range(len(j2.main))]
 
 #On détermine le joueur qui commence
 
-a=Joueur.player1(j1,j2,mode)
-print(a)
+a=Joueur.first_to_play(j1,j2,mode)
+
+print("le 1e joueur est "+a.nom)
 
 
 
