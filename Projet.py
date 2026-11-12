@@ -44,8 +44,15 @@ print("le 1e joueur est "+a.nom)
 
 ### DEFINITION D'UN TOUR
 partie_en_cours=True
+n_tour=1
+
+if j1.ordre==1:
+    j_actif=j1
+else:
+    j_actif=j2
 while partie_en_cours:
 
+    print("Tour de "+j_actif.nom)
 
 
 
