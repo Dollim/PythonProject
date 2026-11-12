@@ -40,9 +40,9 @@ class Joueur:
         return True
 
 
-    def player1(self,j1,j2, mode):
+    def first_to_play(self,j1,j2, mode):
         double_max = -float('inf')
-        first_to_play = random(j1,j2)
+        first_to_play = j1
         for i in range(mode):
             if j1.est_present(Domino(i, i)) and i > double_max:
                 double_max = i
@@ -50,12 +50,15 @@ class Joueur:
             if j2.est_present(Domino(i, i)) and i > double_max:
                 double_max = i
                 first_to_play = j2
+        return double_max, first_to_play
 
 
 if __name__== "__main__":
     joueur1=Joueur("Mayeul")
+    joueur2=Joueur("Aimélien")
     pioche=Talon(mode=7)
     for _ in range(7):
         joueur1.main.append(Talon.piocher(pioche))
-     #on verifie que la pioche fonctionne
-
+        joueur2.main.append(Talon.piocher(pioche))
+    print(joueur1.main)
+    print(Joueur.first_to_play(j1=joueur1,j2=joueur2,mode=7))
