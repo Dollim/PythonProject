@@ -25,18 +25,14 @@ while distrib_valide == False:
     else:
         print("Main invalide, redistribution")
 
-
-
-
 print(f'Voici la main de {j1.nom} : {[str(j1.main[i]) for i in range(len(j1.main))]}')
 print(f'Voici la main de {j2.nom} : {[str(j2.main[i]) for i in range(len(j2.main))]}')
 # Attention ici je print cette expression  compliquée car {j1.main} renvoie une liste de <hfefbzbfa>
 
 
-
 #On détermine le joueur qui commence
 
-
+ j1.main
 
 
 
