@@ -52,3 +52,10 @@ class Joueur:
             return None
         return double_max
 
+    def score_max(self,mode):
+        score=0
+        for d in self.main:
+            if d.score()>score:
+                score = d.score()
+        return score
+
