@@ -1,5 +1,3 @@
-from Classes.plateau import Plateau
-
 class Domino(object):
 
     def __init__(self, gauche, droit):

@@ -11,8 +11,8 @@ class Joueur:
         self.manches_gagnees=0
         self.ordre=0
 
-    def __eq__(self,j2):
-        return self.nom==j2.nom and self.main==j2.main and self.manche_gagnees==j2.manches_gagnees
+    def __eq__(self, j2):
+        return self.nom == j2.nom and self.main == j2.main and self.manches_gagnees == j2.manches_gagnees
 
     def piocher(self,talon):
         self.main.append(Talon.piocher(talon))
@@ -23,7 +23,7 @@ class Joueur:
     def double_max(self):
         L=[]
         for e in self.main:
-            if e[0]==e[1]:
+            if e.g==e.d:
                 L.append(e)
         if L!=[]:
             return min(L)
@@ -84,7 +84,9 @@ class Joueur:
     def placer(self,i):
         return(self.main.pop(i))
 
-    def victoire(self,talon):
-        if len(talon)==0
+    #fonction victoire à copléter
 
-        return len(self.main)==0
+    def victoire(self, talon):
+        if len(self.main)== 0:
+            return True
+        return False
