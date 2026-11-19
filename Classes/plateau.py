@@ -1,5 +1,3 @@
-from Classes.domino import  Domino
-
 class Plateau():
 
     def __init__(self):
@@ -17,6 +15,7 @@ class Plateau():
 
 
 
+from Classes.domino import  Domino
 if __name__=="__main__":
     p=Plateau()
     Plateau.placer(p,Domino(4,5))

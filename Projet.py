@@ -47,9 +47,11 @@ else :
 ### DEFINITION D'UN TOUR
 partie_en_cours=True
 
+plateau.placer(domino_start)
 if j1.ordre==1:
-    plateau.placer(domino_start)
+
     j_actif=j2
+    #supprimer le domino de la main dans les 2 cas
 else:
 
     j_actif=j1
