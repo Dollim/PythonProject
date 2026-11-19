@@ -12,6 +12,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_Form(object):
+    def action(self):
+        N=int(self.lineEdit.text())
+        N2=str(2*N)
+        self.lineEdit_2.setText(N2)
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(433, 378)
@@ -58,6 +62,7 @@ class Ui_Form(object):
         self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("color:green;background:red")
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.action)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
