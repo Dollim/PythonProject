@@ -4,10 +4,18 @@ class Plateau():
         self.p=[]
 
     def placer(self,domino,cote):       # coté peut prendre d (droite) ou g (gauche)
-        if cote=="droite":
+        if len(p)==0:
             self.p.append(domino)
+        elif cote=="droite":
+            if domino.d==self.p[-1].d:
+                    self.p.append(domino.turn())
+            else:
+                self.p.append(domino)
         elif cote=="gauche":
-            self.p.insert(0,domino)
+            if domino.g==self.p[0].g:
+                self.p.insert(0,domino.turn())
+            else:
+                self.p.insert(0,domino)
 
     def __str__(self):
         res=str(self.p)
