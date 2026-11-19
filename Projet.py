@@ -4,13 +4,19 @@ from Classes.domino import  Domino
 from Classes.talon import Talon
 from Classes.plateau import Plateau
 
-
-mode = int(input("Veuillez choisir le mode de jeu (nb de chiffres possibles:)"))
 n_joueur=0
 while n_joueur not in [2,4]:
     n_joueur = int(input("Veuillez choisir le nombre de joueurs (2 ou 4) "))
     if n_joueur not in [2,4]:
         print("mode de jeu indisponible")
+
+if n_joueur == 2:
+    mode = int(input("Veuillez choisir le mode de jeu (7,8,9 ou 10)"))
+    taille_main_depart = mode
+
+if n_joueur == 4:
+    taille_main_depart = 6
+    mode = 7
 
 #On nomme les n joueurs et on les ajoute à la liste temporaire
 
@@ -24,26 +30,25 @@ for i in range(n_joueur):
 ##Initialisation du plateau, et du talon selon le mode choisi
 plateau=Plateau()
 
-# Distribution des mains de départ
-taille_main_depart=7
-distrib_valide=False
 
-while not distrib_valide:
+distribution_valide=False
+
+while not distribution_valide:
     pioche = Talon(mode)
     for j in joueurs_saisis:
         j.main = []
         for _ in range(taille_main_depart):
             j.main.append(Talon.piocher(pioche))
-
+ # ici all remplace une succession de AND (c'est trop pratique)
     if all(j.main_valide(mode) for j in joueurs_saisis):
-        distrib_valide = True
+        distribution_valide = True
         print("Distribution OK")
     else:
-        print("Main invalide, redistribution")
+        print("main invalide --> redistribution")
 
 
-print(f'Voici la main de {joueurs_saisis[0].nom} : {[(joueurs_saisis[0].main[i]) for i in range(len(joueurs_saisies[0].main))]}')
-print(f'Voici la main de {joueurs_saisis[1].nom} : {[(joueurs_saisis[1].main[i]) for i in range(len(joueurs_saisies[1].main))]}')
+#print(f'Voici la main de {joueurs_saisis[0].nom} : {[(joueurs_saisis[0].main[i]) for i in range(len(joueurs_saisies[0].main))]}')
+#print(f'Voici la main de {joueurs_saisis[1].nom} : {[(joueurs_saisis[1].main[i]) for i in range(len(joueurs_saisies[1].main))]}')
 
 #On détermine le joueur qui commence
 

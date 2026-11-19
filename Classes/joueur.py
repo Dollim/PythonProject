@@ -35,7 +35,7 @@ class Joueur:
 
 
     def main_valide(self,mode):          #verifie la validité de la main pour commencer à jouer
-        for i in range(mode):
+        for i in range(7):
             taille_fam=0
             for d in self.main:
                 if i in [d.d,d.g]:
@@ -46,7 +46,7 @@ class Joueur:
 
     def plus_grand_double(self, mode):
         double_max = -1
-        for i in range(mode):
+        for i in range(7):
             if self.est_present(Domino(i, i)) and i > double_max:
                 double_max = i
         if double_max == -1:
@@ -65,7 +65,7 @@ class Joueur:
     def score_main(self):
         score = 0
         for domino in self.main:
-            score += domino.score
+            score += domino.score()
         return score
 
     #def attribution_ordre(self,j2,mode):
