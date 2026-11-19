@@ -33,8 +33,6 @@ class Joueur:
     def est_present(self,d):
         return d in self.main
 
-    def sum_domino(self):
-        return
 
     def main_valide(self,mode):          #verifie la validité de la main pour commencer à jouer
         for i in range(mode):
@@ -94,17 +92,45 @@ class Joueur:
                 j2.ordre = 1
                 return j2.score_max(mode)[1]
 
+    def peut_encore_jouer(self, plateau):
+        for d in self.main:
+            if d.posable(plateau, "g") or d.posable(plateau, "d"):
+                return True
+        return False
 
     def placer(self,i):
         return(self.main.pop(i))
 
     #fonction victoire à copléter
 
-    def victoire(self, talon):
+    def victoire(self,plateau, pioche, liste_joueurs):
         if len(self.main)== 0:
             return True
 
+        if len(pioche.talon) == 0: # si talon vide mais au moins un joueur peut encore jouer
+            for joueur in liste_joueurs:
+                if joueur.peut_encore_jouer(plateau):
+                    return False
+
+        #personne ne peut jouer : on cherche le score le plus bas
+            plus_petit_score = liste_joueurs[0].score_main()
+            for joueur in liste_joueurs:
+                if joueur.score_main() < plus_petit_score:
+                    plus_petit_score = joueur.score_main()
+
+            gagnants = []
+            for joueur in liste_joueurs:
+                if joueur.score_main() == plus_petit_score:
+                    gagnants.append(joueur)
+
+            if len(gagnants)==1 and gagnants[0]==self:
+                return True
         return False
+
+
+
+
+
 
 
 

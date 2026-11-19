@@ -1,4 +1,4 @@
-class Domino(object):
+class Domino:
 
     def __init__(self, gauche, droit):
         self.g = gauche

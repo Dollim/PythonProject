@@ -107,7 +107,7 @@ while partie_en_cours:
             print("Pioche vide : vous passez votre tour")
         n_tour+=1
         continue
-
+    # j'itère jusqu'à ce qu'on considère que le jour à fait un action
     while peut_jouer:
         indice = -1
         while indice<0 or indice > len(j_actif.main)-1:
@@ -120,7 +120,7 @@ while partie_en_cours:
         if Domino.posable(j_actif.main[indice], plateau, cote):
             domino = j_actif.placer(indice)
             plateau.placer(domino, cote)
-            if j_actif.victoire():
+            if j_actif.victoire(plateau,pioche,liste_joueurs):
                 print(f"Le joueur {j_actif.nom} a gagné")
                 partie_en_cours = False
             n_tour += 1
