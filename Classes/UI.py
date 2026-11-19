@@ -1,37 +1,23 @@
 import sys
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-"""
-class Fenetre(QWidget):
-    def __init__(self,w,h):
+from PyQt5.QtWidgets import QApplication,QWidget
+
+class MyWindow(QWidget):
+    def __init__(self,win):
         super().__init__()
-        self.titre=QLabel("Jeu de dominos")
-        titre.setStyleSheet("font-size : 60px;font-weight : bold;")
-        titre.adjustSize()
-        titre.move"""
+        self.win=win
+    def build(self):
+        self.win.setWindowTitle("PyQt 5")
+        self.win.setGeometry(100,100,400,150)
 
+    def change_color(self):
+        self.win.setStyleSheet("background : red;")
 
+if __name__=="__main__":
+    app = QApplication(sys.argv)
+    root=QWidget()
+    mywin=MyWindow(root)
+    root.show()
+    mywin.build()
+    mywin.change_color()
 
-#window=Fenetr()
-
-
-def afficher_message():
-    label.setText("Bonjour ! Bienvenue dans PyQt5.")
-
-app = QApplication(sys.argv)
-fenetre=QWidget()
-
-fenetre.setWindowTitle("Mon premier programme PyQt")
-fenetre.resize(400, 200)
-
-label = QLabel("Cliquez sur le bouton")
-bouton = QPushButton("Cliquez ici")
-
-# Connexion du bouton à la fonction
-bouton.clicked.connect(afficher_message)
-
-fenetre.show()
-sys.exit(app.exec_())
-
-
-
+    sys.exit(app.exec_())
