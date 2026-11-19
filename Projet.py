@@ -14,44 +14,43 @@ while n_joueur not in [2,4]:
 
 #On nomme les n joueurs et on les ajoute à la liste temporaire
 
-joueurs_saisies = []
+joueurs_saisis = []
 
 for i in range(n_joueur):
     nom = input(f"Comment se nomme le joueur {i + 1} ? : ")
     joueur = Joueur(nom)
-    joueurs_saisies.append(joueur)
+    joueurs_saisis.append(joueur)
 
 ##Initialisation du plateau, et du talon selon le mode choisi
-pioche = Talon(mode)
 plateau=Plateau()
 
 # Distribution des mains de départ
 taille_main_depart=7
 distrib_valide=False
-while distrib_valide == False:
+
+while not distrib_valide:
     pioche = Talon(mode)
-    joueurs_saisies[0].main = []
-    joueurs_saisies[1].main = []
-    for _ in range(taille_main_depart):
-        joueurs_saisies[0].main.append(Talon.piocher(pioche))
-        joueurs_saisies[1].main.append(Talon.piocher(pioche))
-    if Joueur.main_valide(joueurs_saisies[0],mode) and Joueur.main_valide(joueurs_saisies[1],mode):         #Ce paragraphe ditribu jusqu'a ce que la main soit valide
-        distrib_valide=True
+    for j in joueurs_saisis:
+        j.main = []
+        for _ in range(taille_main_depart):
+            j.main.append(Talon.piocher(pioche))
+
+    if all(j.main_valide(mode) for j in joueurs_saisis):
+        distrib_valide = True
         print("Distribution OK")
     else:
         print("Main invalide, redistribution")
 
 
-
-print(f'Voici la main de {joueurs_saisies[0].nom} : {[(joueurs_saisies[0].main[i]) for i in range(len(joueurs_saisies[0].main))]}')
-print(f'Voici la main de {joueurs_saisies[1].nom} : {[(joueurs_saisies[1].main[i]) for i in range(len(joueurs_saisies[1].main))]}')
+print(f'Voici la main de {joueurs_saisis[0].nom} : {[(joueurs_saisis[0].main[i]) for i in range(len(joueurs_saisies[0].main))]}')
+print(f'Voici la main de {joueurs_saisis[1].nom} : {[(joueurs_saisis[1].main[i]) for i in range(len(joueurs_saisies[1].main))]}')
 
 #On détermine le joueur qui commence
 
-domino_start=Joueur.attribution_ordre(joueurs_saisies,mode)
+domino_start=joueurs_saisis[0].attribution_ordre(joueurs_saisis,mode)
 
 liste_joueurs = [None for i in range(n_joueur)]
-for joueur in joueurs_saisies:
+for joueur in joueurs_saisis:
         liste_joueurs[joueur.ordre-1]=joueur
 
 ### DEFINITION D'UN TOUR
