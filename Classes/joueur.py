@@ -61,7 +61,7 @@ class Joueur:
                 domino_score_max=d
         return score,domino_score_max
 
-    def attribution_ordre(self,j2,j3,j4,mode):
+    def attribution_ordre(self,j2,mode):
         if self.plus_grand_double(mode) > j2.plus_grand_double(mode):
             self.ordre = 1
             j2.ordre = 2
