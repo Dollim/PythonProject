@@ -4,13 +4,6 @@ from Classes.domino import  Domino
 from Classes.talon import Talon
 from Classes.plateau import Plateau
 
-def quijoue(n_tour,n_joueur):
-    i=1
-    while True:
-        if n_tour%n_joueur == i:
-            return i
-        else :
-            i+=1
 
 mode = int(input("Veuillez choisir le mode de jeu (nb de chiffres possibles:)"))
 
@@ -21,7 +14,7 @@ while n_joueur not in [2,4]:
 
 #On nomme les n joueurs et on les ajoute à la liste temporaire
 
-liste_des_joueurs = []
+liste_des_joueurs_temporaire = []
 for i in range(n_joueur):
     j"i" =Joueur(str(input("Comment se nomme le joueur" i " ? :")))
     liste_des_joueurs.append(j"i")
@@ -47,15 +40,18 @@ while distrib_valide == False:
 
 print(f'Voici la main de {j1.nom} : {[(j1.main[i]) for i in range(len(j1.main))]}')
 print(f'Voici la main de {j2.nom} : {[(j2.main[i]) for i in range(len(j2.main))]}')
-# Attention ici je print cette expression  compliquée car {j1.main} renvoie une liste de <hfefbzbfa>
 
 #On détermine le joueur qui commence
+if n_joueur = 2:
+    domino_start=Joueur.attribution_ordre(j1,j2,mode)
 
-domino_start=Joueur.attribution_ordre(j1,j2,mode)
+# ici faire le cas pour 4 joueurs
+if n_joueur = 4:
+    domino_start = Joueur.attribution_ordre(j1, j2, mode)
 
-
-
-
+liste_des_joueurs = [0 for i in range(n_joueur)]
+for i in range(n_joueur):
+        liste_des_joueurs[liste_des_joueurs_temporaire[i].ordre]=liste_des_joueurs_temporaire[i]
 
 ### DEFINITION D'UN TOUR
 partie_en_cours=True
@@ -66,15 +62,20 @@ n_tour = 1
 
 
 while partie_en_cours:
+
     if n_tour==1:       # 1E tour
         plateau.placer(domino_start)
-        j_actif=j1 # a modifier avec la fonction qui donne le 1e joueur actif.
+        j_actif=liste_des_joueurs[0]
         for i in range(len(j_actif.main)):
             if j_actif.main[i]==domino_start:
                 j_actif.placer(i)
         n_tour+=1
 
+    n_tour % n_joueur - 1
 
+    j_actif= liste_des_joueurs[n_tour%n_joueur-1]
+
+    print(f"C'est au tour du joueur" joueur_actif.nom "de jouer")
 
     indice = int(input("Donnez l'indice du domino que vous voulez jouer")) - 1
 
