@@ -15,9 +15,11 @@ while n_joueur not in [2,4]:
 #On nomme les n joueurs et on les ajoute à la liste temporaire
 
 liste_des_joueurs_temporaire = []
+
 for i in range(n_joueur):
-    j"i" =Joueur(str(input("Comment se nomme le joueur" i " ? :")))
-    liste_des_joueurs.append(j"i")
+    nom = input(f"Comment se nomme le joueur {i + 1} ? : ")
+    joueur = Joueur(nom)
+    liste_des_joueurs_temporaire.append(joueur)
 
 ##Initialisation du plateau, et du talon selon le mode choisi
 pioche = Talon(mode)
@@ -47,7 +49,7 @@ if n_joueur = 2:
 
 # ici faire le cas pour 4 joueurs
 if n_joueur = 4:
-    domino_start = Joueur.attribution_ordre(j1, j2, mode)
+    domino_start=Joueur.attribution_ordre(j1, j2, mode)
 
 liste_des_joueurs = [0 for i in range(n_joueur)]
 for i in range(n_joueur):
@@ -58,52 +60,55 @@ partie_en_cours=True
 n_tour = 1
 
 
-
-
-
 while partie_en_cours:
 
-    if n_tour==1:       # 1E tour
-        plateau.placer(domino_start)
-        j_actif=liste_des_joueurs[0]
+        if n_tour==1:
+            plateau.placer(domino_start)
+            j_actif=liste_des_joueurs[0]
+            for i in range(len(j_actif.main)):
+                if j_actif.main[i]==domino_start:
+                    j_actif.placer(i)
+            n_tour+=1
+
+        j_actif= liste_des_joueurs[n_tour%n_joueur-1]
+
+        print(f"C'est au tour de" j_actif.nom "de jouer")
+
+        peut_jouer = False
+
         for i in range(len(j_actif.main)):
-            if j_actif.main[i]==domino_start:
-                j_actif.placer(i)
-        n_tour+=1
+            for cote in ["d", "g"]:
+                if Domino.posable(j_actif.main[i],plateau,cote):
+                    peut_jouer = True
 
-    n_tour % n_joueur - 1
+        if peut_jouer == False:
+            print("Vous ne pouvez pas poser de domino, vous devez piocher")
+            j_actif.main.append(Talon.piocher(pioche))
+            n_tour+=1
 
-    j_actif= liste_des_joueurs[n_tour%n_joueur-1]
+        while peut_jouer:
+            while indice<0 or indice > len(j_actif.main) -1:
+                indice = int(input("Donnez l'indice du domino que vous voulez jouer")) - 1
 
-    print(f"C'est au tour du joueur" joueur_actif.nom "de jouer")
-
-    indice = int(input("Donnez l'indice du domino que vous voulez jouer")) - 1
-
-    if 0 <= indice < len(j_actif.main):
-
-        cote = input("Où voulez vous le placer (droite/gauche) ?")
-
-        if cote in ["droite", "gauche", "d", "g"]:
+            while cote not in ["d", "g"]:
+                cote = input("Où voulez vous le placer (d/g) ?")
 
             if Domino.posable(j_actif.main[indice], plateau, cote):
                 domino = j_actif.placer(indice)
                 plateau.placer(domino, cote)
-
-            else:
-                print("le domino n'est pas posable, veuillez en choisir un autre")
-                # refaire prendre un domino au joueur
-
-        else:
-    # on redemande le coté
-
-    else:
-    # on redemande le domino
+                n_tour+=1
+                peut_jouer = False
+            else : print("Ce domino ne peut pas être posé ici")
 
     # Condition de victoire
-    if condition de victoire:
-        partie_en_cours = False
+        for j in liste_des_joueurs:
+            if j.victoire:
+                partie_en_cours = False
+                print("Le joueur" j.nom "a gagné")
 
-    n_tour += 1
+
+
+
 
 
 
