@@ -49,16 +49,16 @@ partie_en_cours=True
 
 n_tour = 1
 
-plateau.placer(domino_start)
-if j1.ordre==1:
-    j_actif=j2
-    #supprimer le domino de la main dans les 2 cas
-else:
-    j_actif=j1
-
 
 
 while partie_en_cours:
+    if n_tour==1:       # 1E tour
+        plateau.placer(domino_start)
+        j_actif=j1 # a modifier avec la fonction qui donne le joueur actif.
+        for i in range(len(j_actif.main)):
+            if j_actif.main[i]==domino_start:
+                j_actif.placer(i)
+        n_tour+=1
 
     if n_tour %
 
