@@ -4,9 +4,22 @@ from Classes.domino import  Domino
 from Classes.talon import Talon
 from Classes.plateau import Plateau
 
+def quijoue(n_tour,n_joueur):
+    i=1
+    while True:
+        if n_tour%n_joueur == i:
+            return i
+        else :
+            i+=1
+
 mode = int(input("Veuillez choisir le mode de jeu (nb de chiffres possibles:)"))
 
-#On nomme les deux joueurs
+while n_joueur not in [2,4]:
+    n_joueur = int(input("Veuillez choisir le nombre de joueurs (2 ou 4) "))
+    if n_joueur not in [2,4]:
+        print("mode de jeu indisponible")
+
+#On nomme les n joueurs
 j1=Joueur(str(input("Comment se nomme le joueur 1 ? :")))
 j2=Joueur(str(input("Comment se nomme le joueur 2 ? :")))
 
@@ -60,7 +73,7 @@ else:
 
 while partie_en_cours:
 
-    if n_tour %
+
 
     indice = int(input("Donnez l'indice du domino que vous voulez jouer")) - 1
 
