@@ -25,10 +25,15 @@ class Domino(object):
     def __repr__(self):
         return f"[{self.g} 〡 {self.d}]"
 
-    def posable(self,plateau,cote):
-        if self.g == plateau.p[-1].cote or self.d == plateau.p[-1].cote:
-            return True
-        return False
+    def posable(self, plateau, cote):
+        if cote == "d":
+            ext_plateau = plateau.p[-1].d
+        elif cote == "g":
+            ext_plateau = plateau.p[0].g
+        else:
+            return False
+
+        return self.g == ext_plateau or self.d == ext_plateau
 
 if __name__== "__main__":
     dr=Domino(3,7)

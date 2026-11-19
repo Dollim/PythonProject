@@ -57,18 +57,34 @@ n_tour = 1
 
 
 while partie_en_cours:
+    print("\n" + "-" * 40)
 
-        if n_tour==1:
-            plateau.placer(domino_start)
-            j_actif=liste_joueurs[0]
-            for i in range(len(j_actif.main)):
-                if j_actif.main[i]==domino_start:
-                    j_actif.placer(i)
-            n_tour+=1
+    if n_tour == 1:
+        j_actif = liste_joueurs[0]
+        index_depart = None
 
+        for i in range(len(j_actif.main)):
+            if j_actif.main[i] == domino_start:
+                index_depart = i
+                break
+
+        if index_depart is not None:
+            domino_pose = j_actif.placer(index_depart)
+            # Si j_actif.placer(i) ne retourne rien, on garde domino_start
+            domino_a_poser = domino_pose if domino_pose is not None else domino_start
+            plateau.placer(domino_a_poser, "d")
+        else:
+            print("Attention : domino_start introuvable dans la main du premier joueur.")
+            plateau.placer(domino_start, "d")
+
+        n_tour += 1
         j_actif= liste_joueurs[(n_tour - 1) % n_joueur]
 
-        print(f"C'est au tour de {j_actif.nom} de jouer")
+
+        print(f"Tour {n_tour} — C'est au tour de {j_actif.nom}")
+        print("Plateau :", plateau)
+
+        print(f"Ta main :{j_actif.main}")
 
         peut_jouer = False
 
@@ -84,7 +100,7 @@ while partie_en_cours:
 
         while peut_jouer:
             indice = -1
-            while indice<0 or indice > len(j_actif.main) -1:
+            while indice<0 or indice > len(j_actif.main)-1:
                 indice = int(input("Donnez l'indice du domino que vous voulez jouer")) - 1
 
             cote = ""
@@ -94,15 +110,14 @@ while partie_en_cours:
             if Domino.posable(j_actif.main[indice], plateau, cote):
                 domino = j_actif.placer(indice)
                 plateau.placer(domino, cote)
-                n_tour+=1
+                if j_actif.victoire(pioche):
+                    print(f"Le joueur {j_actif.nom} a gagné")
+                    partie_en_cours = False
+                n_tour += 1
                 peut_jouer = False
-            else : print("Ce domino ne peut pas être posé ici")
+            else:
+                print("Ce domino ne peut pas être posé ici")
 
-    # Condition de victoire
-        for j in liste_joueurs:
-            if j.victoire:
-                partie_en_cours = False
-                print(f"Le joueur {j.nom} a gagné")
 
 
 

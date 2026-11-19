@@ -62,15 +62,15 @@ class Joueur:
         return score,domino_score_max
 
     def attribution_ordre(self,j2,mode):
-        if self.plus_grand_double(mode) > j2.plus_grand_double(mode):
+        if self.plus_grand_double(mode)[0] > j2.plus_grand_double(mode)[0]:
             self.ordre = 1
             j2.ordre = 2
             return self.plus_grand_double(mode)[1]
-        elif self.plus_grand_double(mode) < j2.plus_grand_double(mode):
+        elif self.plus_grand_double(mode)[0] < j2.plus_grand_double(mode)[0]:
             self.ordre = 2
             j2.ordre = 1
             return j2.plus_grand_double(mode)[1]
-        elif self.plus_grand_double(mode) == j2.plus_grand_double(mode):
+        elif self.plus_grand_double(mode)[0] == j2.plus_grand_double(mode)[0]:
             if self.score_max > j2.score_max:
                 self.ordre = 1
                 j2.ordre = 2
