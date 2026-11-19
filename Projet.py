@@ -47,32 +47,62 @@ else :
 ### DEFINITION D'UN TOUR
 partie_en_cours=True
 
+n_tour = 1
+
 plateau.placer(domino_start)
 if j1.ordre==1:
-
     j_actif=j2
     #supprimer le domino de la main dans les 2 cas
 else:
-
     j_actif=j1
+
+
+
 while partie_en_cours:
-    print("Tour de "+j_actif.nom)
-    print("Plateau:    ",plateau)
-    print("Main:    ",str(j_actif.main))
-    indice=int(input("Donnez l'indice du domino que vous voulez jouer"))-1
-    coté=input("Où voulez vous le placer (d/g) ?")
 
-    if Domino.posable(j_actif.main[indice],plateau,coté):
-        domino=j_actif.placer(indice)
-        plateau.placer(domino,coté)
+    if n_tour %
 
-    if True:    # Condition d'arret de la manche
-        partie_en_cours=False
+    indice = int(input("Donnez l'indice du domino que vous voulez jouer")) - 1
 
-    if j_actif==j1:
-        j_actif==j2
+    if 0 <= indice < len(j_actif.main):
+
+        cote = input("Où voulez vous le placer (droite/gauche) ?")
+
+        if cote in ["droite", "gauche", "d", "g"]:
+
+            if Domino.posable(j_actif.main[indice], plateau, cote):
+                domino = j_actif.placer(indice)
+                plateau.placer(domino, cote)
+
+            else:
+                print("le domino n'est pas posable, veuillez en choisir un autre")
+                # refaire prendre un domino au joueur
+
+        else:
+    # on redemande le coté
+
     else:
-        j_actif=j1
+    # on redemande le domino
+
+    # Condition de victoire
+    if condition de victoire:
+        partie_en_cours = False
+
+    n_tour += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
