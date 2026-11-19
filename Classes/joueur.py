@@ -33,6 +33,9 @@ class Joueur:
     def est_present(self,d):
         return d in self.main
 
+    def sum_domino(self):
+        return
+
     def main_valide(self,mode):          #verifie la validité de la main pour commencer à jouer
         for i in range(mode):
             taille_fam=0
@@ -61,17 +64,28 @@ class Joueur:
                 domino_score_max=d
         return score,domino_score_max
 
+    def score_main(self):
+        score = 0
+        for domino in self.main:
+            score += domino.score
+        return score
+
     def attribution_ordre(self,j2,mode):
-        if self.plus_grand_double(mode)[0] > j2.plus_grand_double(mode)[0]:
+        d1 = self.plus_grand_double(mode)
+        d2 = j2.plus_grand_double(mode)
+        val1 = d1[0] if d1 is not None else -1
+        val2 = d2[0] if d2 is not None else -1
+
+        if val1 > val2:
             self.ordre = 1
             j2.ordre = 2
-            return self.plus_grand_double(mode)[1]
-        elif self.plus_grand_double(mode)[0] < j2.plus_grand_double(mode)[0]:
+            return d1[1]
+        elif val1 < val2:
             self.ordre = 2
             j2.ordre = 1
-            return j2.plus_grand_double(mode)[1]
-        elif self.plus_grand_double(mode)[0] == j2.plus_grand_double(mode)[0]:
-            if self.score_max > j2.score_max:
+            return d2[1]
+        else:
+            if self.score_max(mode)[0] > j2.score_max(mode)[0]:
                 self.ordre = 1
                 j2.ordre = 2
                 return self.score_max(mode)[1]
@@ -89,6 +103,7 @@ class Joueur:
     def victoire(self, talon):
         if len(self.main)== 0:
             return True
+
         return False
 
 
