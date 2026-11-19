@@ -19,9 +19,12 @@ while n_joueur not in [2,4]:
     if n_joueur not in [2,4]:
         print("mode de jeu indisponible")
 
-#On nomme les n joueurs
-j1=Joueur(str(input("Comment se nomme le joueur 1 ? :")))
-j2=Joueur(str(input("Comment se nomme le joueur 2 ? :")))
+#On nomme les n joueurs et on les ajoute à la liste temporaire
+
+liste_des_joueurs = []
+for i in range(n_joueur):
+    j"i" =Joueur(str(input("Comment se nomme le joueur" i " ? :")))
+    liste_des_joueurs.append(j"i")
 
 ##Initialisation du plateau, et du talon selon le mode choisi
 pioche = Talon(mode)
@@ -50,17 +53,15 @@ print(f'Voici la main de {j2.nom} : {[(j2.main[i]) for i in range(len(j2.main))]
 
 domino_start=Joueur.attribution_ordre(j1,j2,mode)
 
-if j1.ordre == 1:
-    print("le 1e joueur est "+j1.nom)
-else :
-    print("le 1e joueur est "+j2.nom)
+
 
 
 
 ### DEFINITION D'UN TOUR
 partie_en_cours=True
-
 n_tour = 1
+
+
 
 
 
