@@ -68,7 +68,7 @@ class Joueur:
             score += domino.score
         return score
 
-    def attribution_ordre(self,j2,mode):
+    #def attribution_ordre(self,j2,mode):
         d1 = self.plus_grand_double(mode)
         d2 = j2.plus_grand_double(mode)
         val1 = d1[0] if d1 is not None else -1
@@ -91,6 +91,51 @@ class Joueur:
                 self.ordre = 2
                 j2.ordre = 1
                 return j2.score_max(mode)[1]
+
+    def attribution_ordre(self, liste_joueurs, mode):
+
+        if type(liste_joueurs) is not list:
+            liste_joueurs = [self, liste_joueurs]
+
+
+        meilleur_double_val = -1
+        gagnant_double = None
+        domino_double = None
+
+        for j in liste_joueurs:
+            d = j.plus_grand_double(mode)
+            if d is not None and d[0] > meilleur_double_val:
+                meilleur_double_val = d[0]
+                gagnant_double = j
+                domino_double = d[1]
+
+
+        if gagnant_double is not None:
+            premier = gagnant_double
+            domino_depart = domino_double
+        else:   #on prends celui qui a le meilleur score sinon
+            meilleur_score_val = -1
+            premier = liste_joueurs[0]
+            domino_depart = None
+
+            for j in liste_joueurs:
+                s = j.score_max(mode)
+                if s is not None and s[0] > meilleur_score_val:
+                    meilleur_score_val = s[0]
+                    premier = j
+                    domino_depart = s[1]
+
+        indice_du_premier = 0
+        for i in range(len(liste_joueurs)):
+            if liste_joueurs[i] == premier:
+                indice_du_premier = i
+        n = len(liste_joueurs)
+
+        for i in range(n):
+            joueur_courant = liste_joueurs[(indice_du_premier + i) % n]
+            joueur_courant.ordre = i + 1
+
+        return domino_depart
 
     def peut_encore_jouer(self, plateau):
         for d in self.main:

@@ -47,8 +47,8 @@ print(f'Voici la main de {joueurs_saisies[0].nom} : {[(joueurs_saisies[0].main[i
 print(f'Voici la main de {joueurs_saisies[1].nom} : {[(joueurs_saisies[1].main[i]) for i in range(len(joueurs_saisies[1].main))]}')
 
 #On détermine le joueur qui commence
-if n_joueur == 2:
-    domino_start=Joueur.attribution_ordre(joueurs_saisies[0],joueurs_saisies[1],mode)
+
+domino_start=Joueur.attribution_ordre(joueurs_saisies,mode)
 
 liste_joueurs = [None for i in range(n_joueur)]
 for joueur in joueurs_saisies:
