@@ -91,6 +91,31 @@
     </font>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>102</x>
+     <y>220</y>
+     <width>191</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:green;background:red</string>
+   </property>
+   <property name="text">
+    <string>Validate</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
