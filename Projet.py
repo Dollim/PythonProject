@@ -68,7 +68,7 @@ n_tour = 1
 while partie_en_cours:
     if n_tour==1:       # 1E tour
         plateau.placer(domino_start)
-        j_actif=j1 # a modifier avec la fonction qui donne le joueur actif.
+        j_actif=j1 # a modifier avec la fonction qui donne le 1e joueur actif.
         for i in range(len(j_actif.main)):
             if j_actif.main[i]==domino_start:
                 j_actif.placer(i)
