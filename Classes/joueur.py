@@ -34,8 +34,8 @@ class Joueur:
         return d in self.main
 
 
-    def main_valide(self,mode):          #verifie la validité de la main pour commencer à jouer
-        for i in range(7):
+    def main_valide(self,taille_main=7):          #verifie la validité de la main pour commencer à jouer
+        for i in range(taille_main):
             taille_fam=0
             for d in self.main:
                 if i in [d.d,d.g]:
