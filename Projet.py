@@ -4,54 +4,58 @@ from Classes.domino import  Domino
 from Classes.talon import Talon
 from Classes.plateau import Plateau
 
-
-mode = int(input("Veuillez choisir le mode de jeu (nb de chiffres possibles:)"))
 n_joueur=0
 while n_joueur not in [2,4]:
     n_joueur = int(input("Veuillez choisir le nombre de joueurs (2 ou 4) "))
     if n_joueur not in [2,4]:
         print("mode de jeu indisponible")
 
+if n_joueur == 2:
+    mode = int(input("Veuillez choisir le mode de jeu (7,8,9 ou 10)"))
+    taille_main_depart = mode
+
+if n_joueur == 4:
+    taille_main_depart = 6
+    mode = 7
+
 #On nomme les n joueurs et on les ajoute à la liste temporaire
 
-joueurs_saisies = []
+joueurs_saisis = []
 
 for i in range(n_joueur):
     nom = input(f"Comment se nomme le joueur {i + 1} ? : ")
     joueur = Joueur(nom)
-    joueurs_saisies.append(joueur)
+    joueurs_saisis.append(joueur)
 
 ##Initialisation du plateau, et du talon selon le mode choisi
-pioche = Talon(mode)
 plateau=Plateau()
 
-# Distribution des mains de départ
-taille_main_depart=7
-distrib_valide=False
-while distrib_valide == False:
+
+distribution_valide=False
+
+while not distribution_valide:
     pioche = Talon(mode)
-    joueurs_saisies[0].main = []
-    joueurs_saisies[1].main = []
-    for _ in range(taille_main_depart):
-        joueurs_saisies[0].main.append(Talon.piocher(pioche))
-        joueurs_saisies[1].main.append(Talon.piocher(pioche))
-    if Joueur.main_valide(joueurs_saisies[0],mode) and Joueur.main_valide(joueurs_saisies[1],mode):         #Ce paragraphe ditribu jusqu'a ce que la main soit valide
-        distrib_valide=True
+    for j in joueurs_saisis:
+        j.main = []
+        for _ in range(taille_main_depart):
+            j.main.append(Talon.piocher(pioche))
+ # ici all remplace une succession de AND (c'est trop pratique)
+    if all(j.main_valide(mode) for j in joueurs_saisis):
+        distribution_valide = True
         print("Distribution OK")
     else:
-        print("Main invalide, redistribution")
+        print("main invalide --> redistribution")
 
 
-
-print(f'Voici la main de {joueurs_saisies[0].nom} : {[(joueurs_saisies[0].main[i]) for i in range(len(joueurs_saisies[0].main))]}')
-print(f'Voici la main de {joueurs_saisies[1].nom} : {[(joueurs_saisies[1].main[i]) for i in range(len(joueurs_saisies[1].main))]}')
+#print(f'Voici la main de {joueurs_saisis[0].nom} : {[(joueurs_saisis[0].main[i]) for i in range(len(joueurs_saisies[0].main))]}')
+#print(f'Voici la main de {joueurs_saisis[1].nom} : {[(joueurs_saisis[1].main[i]) for i in range(len(joueurs_saisies[1].main))]}')
 
 #On détermine le joueur qui commence
-if n_joueur == 2:
-    domino_start=Joueur.attribution_ordre(joueurs_saisies[0],joueurs_saisies[1],mode)
+
+domino_start=joueurs_saisis[0].attribution_ordre(joueurs_saisis,mode)
 
 liste_joueurs = [None for i in range(n_joueur)]
-for joueur in joueurs_saisies:
+for joueur in joueurs_saisis:
         liste_joueurs[joueur.ordre-1]=joueur
 
 ### DEFINITION D'UN TOUR
@@ -107,7 +111,7 @@ while partie_en_cours:
             print("Pioche vide : vous passez votre tour")
         n_tour+=1
         continue
-
+    # j'itère jusqu'à ce qu'on considère que le jour à fait un action
     while peut_jouer:
         indice = -1
         while indice<0 or indice > len(j_actif.main)-1:
@@ -120,7 +124,7 @@ while partie_en_cours:
         if Domino.posable(j_actif.main[indice], plateau, cote):
             domino = j_actif.placer(indice)
             plateau.placer(domino, cote)
-            if j_actif.victoire():
+            if j_actif.victoire(plateau,pioche,liste_joueurs):
                 print(f"Le joueur {j_actif.nom} a gagné")
                 partie_en_cours = False
             n_tour += 1

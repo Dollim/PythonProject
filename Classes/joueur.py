@@ -33,11 +33,9 @@ class Joueur:
     def est_present(self,d):
         return d in self.main
 
-    def sum_domino(self):
-        return
 
     def main_valide(self,mode):          #verifie la validité de la main pour commencer à jouer
-        for i in range(mode):
+        for i in range(7):
             taille_fam=0
             for d in self.main:
                 if i in [d.d,d.g]:
@@ -48,7 +46,7 @@ class Joueur:
 
     def plus_grand_double(self, mode):
         double_max = -1
-        for i in range(mode):
+        for i in range(7):
             if self.est_present(Domino(i, i)) and i > double_max:
                 double_max = i
         if double_max == -1:
@@ -67,10 +65,10 @@ class Joueur:
     def score_main(self):
         score = 0
         for domino in self.main:
-            score += domino.score
+            score += domino.score()
         return score
 
-    def attribution_ordre(self,j2,mode):
+    #def attribution_ordre(self,j2,mode):
         d1 = self.plus_grand_double(mode)
         d2 = j2.plus_grand_double(mode)
         val1 = d1[0] if d1 is not None else -1
@@ -94,17 +92,90 @@ class Joueur:
                 j2.ordre = 1
                 return j2.score_max(mode)[1]
 
+    def attribution_ordre(self, liste_joueurs, mode):
+
+        if type(liste_joueurs) is not list:
+            liste_joueurs = [self, liste_joueurs]
+
+
+        meilleur_double_val = -1
+        gagnant_double = None
+        domino_double = None
+
+        for j in liste_joueurs:
+            d = j.plus_grand_double(mode)
+            if d is not None and d[0] > meilleur_double_val:
+                meilleur_double_val = d[0]
+                gagnant_double = j
+                domino_double = d[1]
+
+
+        if gagnant_double is not None:
+            premier = gagnant_double
+            domino_depart = domino_double
+        else:   #on prends celui qui a le meilleur score sinon
+            meilleur_score_val = -1
+            premier = liste_joueurs[0]
+            domino_depart = None
+
+            for j in liste_joueurs:
+                s = j.score_max(mode)
+                if s is not None and s[0] > meilleur_score_val:
+                    meilleur_score_val = s[0]
+                    premier = j
+                    domino_depart = s[1]
+
+        indice_du_premier = 0
+        for i in range(len(liste_joueurs)):
+            if liste_joueurs[i] == premier:
+                indice_du_premier = i
+        n = len(liste_joueurs)
+
+        for i in range(n):
+            joueur_courant = liste_joueurs[(indice_du_premier + i) % n]
+            joueur_courant.ordre = i + 1
+
+        return domino_depart
+
+    def peut_encore_jouer(self, plateau):
+        for d in self.main:
+            if d.posable(plateau, "g") or d.posable(plateau, "d"):
+                return True
+        return False
 
     def placer(self,i):
         return(self.main.pop(i))
 
     #fonction victoire à copléter
 
-    def victoire(self, talon):
+    def victoire(self,plateau, pioche, liste_joueurs):
         if len(self.main)== 0:
             return True
 
+        if len(pioche.talon) == 0: # si talon vide mais au moins un joueur peut encore jouer
+            for joueur in liste_joueurs:
+                if joueur.peut_encore_jouer(plateau):
+                    return False
+
+        #personne ne peut jouer : on cherche le score le plus bas
+            plus_petit_score = liste_joueurs[0].score_main()
+            for joueur in liste_joueurs:
+                if joueur.score_main() < plus_petit_score:
+                    plus_petit_score = joueur.score_main()
+
+            gagnants = []
+            for joueur in liste_joueurs:
+                if joueur.score_main() == plus_petit_score:
+                    gagnants.append(joueur)
+
+            if len(gagnants)==1 and gagnants[0]==self:
+                return True
         return False
+
+
+
+
+
 
 
 
