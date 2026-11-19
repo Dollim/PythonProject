@@ -30,7 +30,6 @@ for i in range(n_joueur):
 ##Initialisation du plateau, et du talon selon le mode choisi
 plateau=Plateau()
 
-
 distribution_valide=False
 
 while not distribution_valide:
@@ -40,7 +39,7 @@ while not distribution_valide:
         for _ in range(taille_main_depart):
             j.main.append(Talon.piocher(pioche))
  # ici all remplace une succession de AND (c'est trop pratique)
-    if all(j.main_valide(mode) for j in joueurs_saisis):
+    if all(j.main_valide(taille_main_depart) for j in joueurs_saisis):
         distribution_valide = True
         print("Distribution OK")
     else:
