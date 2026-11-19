@@ -9,6 +9,7 @@ while n_joueur not in [2,4]:
     n_joueur = int(input("Veuillez choisir le nombre de joueurs (2 ou 4) "))
     if n_joueur not in [2,4]:
         print("mode de jeu indisponible")
+    jeu_avec_ia= input("Voulez-vous des IA? ")
 
 if n_joueur == 2:
     mode = int(input("Veuillez choisir le mode de jeu (7,8,9 ou 10)"))
@@ -23,8 +24,12 @@ if n_joueur == 4:
 joueurs_saisis = []
 
 for i in range(n_joueur):
-    nom = input(f"Comment se nomme le joueur {i + 1} ? : ")
-    joueur = Joueur(nom)
+    nom = input(f"Comment s'appelle le joueur {i + 1} ? : ")
+    if jeu_avec_ia in ("o", "oui", "y", "yes"):
+        est_ia = input("Est-ce une IA ? : ")
+        if est_ia in ("o", "oui", "y", "yes"):
+            est_ia = True
+    joueur = Joueur(nom, est_ia)
     joueurs_saisis.append(joueur)
 
 ##Initialisation du plateau, et du talon selon le mode choisi
@@ -88,6 +93,31 @@ while partie_en_cours:
 
     j_actif= liste_joueurs[(n_tour - 1) % n_joueur]
 
+    # je rajoute cette partie là pour si le joueur est une IA
+    if j_actif.est_ia:
+        coup = j_actif.choisir_coup_random(plateau)
+
+        if coup is None:
+            print(f"{j_actif.nom} (IA) ne peut pas jouer et pioche.")
+            domino_pioche = pioche.piocher()
+            if domino_pioche is not None:
+                j_actif.main.append(domino_pioche)
+            else:
+                print("Pioche vide : l'IA passe son tour")
+            n_tour += 1
+            continue
+
+        indice, cote = coup
+        domino = j_actif.placer(indice)
+        plateau.placer(domino, cote)
+        print(f"{j_actif.nom} (IA) pose {domino} à {'droite' if cote == 'd' else 'gauche'}.")
+
+        if j_actif.victoire(plateau, pioche, liste_joueurs):
+            print(f"Le joueur {j_actif.nom} (IA) a gagné !")
+            partie_en_cours = False
+
+        n_tour += 1
+        continue
 
     print(f"Tour {n_tour} — C'est au tour de {j_actif.nom}")
     print("Plateau :", plateau)

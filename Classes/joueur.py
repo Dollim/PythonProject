@@ -5,11 +5,12 @@ from Classes.plateau import Plateau
 
 class Joueur:
 
-    def __init__(self, n):
+    def __init__(self, n, est_ia):
         self.nom = n
         self.main=[]
         self.manches_gagnees=0
         self.ordre=0
+        self.est_ia = False
 
     def __eq__(self, j2):
         return self.nom == j2.nom and self.main == j2.main and self.manches_gagnees == j2.manches_gagnees
@@ -171,6 +172,19 @@ class Joueur:
             if len(gagnants)==1 and gagnants[0]==self:
                 return True
         return False
+
+    def choisir_coup_random(self, plateau):
+        coups_possibles = []
+
+        for i in range(len(self.main)):
+            for cote in ("g", "d"):
+                if Domino.posable(self.main[i], plateau, cote):
+                    coups_possibles.append((i, cote))
+
+        if not coups_possibles:
+            return None
+
+        return random.choice(coups_possibles)
 
 
 
