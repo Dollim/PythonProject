@@ -1,4 +1,3 @@
-from Classes.mains import Main
 from Classes.joueur import Joueur
 from Classes.domino import  Domino
 from Classes.talon import Talon
@@ -9,7 +8,7 @@ while n_joueur not in [2,4]:
     n_joueur = int(input("Veuillez choisir le nombre de joueurs (2 ou 4) "))
     if n_joueur not in [2,4]:
         print("mode de jeu indisponible")
-    jeu_avec_ia= input("Voulez-vous des IA? ")
+jeu_avec_ia= input("Voulez-vous des IA? ")
 
 if n_joueur == 2:
     mode = int(input("Veuillez choisir le mode de jeu (7,8,9 ou 10)"))
@@ -32,6 +31,8 @@ for i in range(n_joueur):
             est_ia = True
     joueur = Joueur(nom, est_ia)
     joueurs_saisis.append(joueur)
+
+
 
 ##Initialisation du plateau, et du talon selon le mode choisi
 plateau = Plateau()
@@ -146,12 +147,14 @@ while partie_en_cours:
     while peut_jouer:
 
         indice = -1
-        while indice<0 or indice > len(j_actif.main)-1:
-            saisie = int(input(f"Donnez l'indice du domino que vous voulez jouer (de 1 à {len(j_actif.main)} :"))
-            if type(saisie) == int:
-                indice = int(saisie) - 1
-            else:
-                print("Veuillez entrer un numéro valide.")
+        while indice < 0 or indice > len(j_actif.main) - 1:
+            try:
+                saisie = int(input(f"Donnez le numéro du domino que vous voulez jouer (de 1 à {len(j_actif.main)}): "))
+                indice = saisie - 1
+                if indice < 0 or indice > len(j_actif.main) - 1:
+                    print(f"Veuillez entrer un numéro entre 1 et {len(j_actif.main)}:")
+            except ValueError:
+                print("Saisie invalide : entrez un nombre entier.")
 
         cote = ""
         while cote not in ["d", "g"]:
