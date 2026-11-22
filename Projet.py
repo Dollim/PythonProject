@@ -24,32 +24,34 @@ if n_joueur == 4:
 joueurs_saisis = []
 
 for i in range(n_joueur):
-    nom = input(f"Comment s'appelle le joueur {i + 1} ? : ")
-    if jeu_avec_ia in ("o", "oui", "y", "yes"):
-        est_ia = input("Est-ce une IA ? : ")
-        if est_ia in ("o", "oui", "y", "yes"):
+    nom = input(f"Comment s'appelle le joueur {i + 1} ?: ")
+    est_ia = False
+    if jeu_avec_ia in ("o", "oui"):
+        rep_ia = input("Est-ce une IA ? : ")
+        if rep_ia in ("o", "oui"):
             est_ia = True
     joueur = Joueur(nom, est_ia)
     joueurs_saisis.append(joueur)
 
 ##Initialisation du plateau, et du talon selon le mode choisi
-plateau=Plateau()
+plateau = Plateau()
 
-distribution_valide=False
+distribution_valide = False
 
 while not distribution_valide:
     pioche = Talon(mode)
     for j in joueurs_saisis:
         j.main = []
         for _ in range(taille_main_depart):
-            j.main.append(Talon.piocher(pioche))
- # ici all remplace une succession de AND (c'est trop pratique)
+            domino_pioche = pioche.piocher()
+            if domino_pioche is not None:
+                j.main.append(domino_pioche)
+    # ici all remplace une succession de AND (c'est trop pratique)
     if all(j.main_valide(taille_main_depart) for j in joueurs_saisis):
         distribution_valide = True
         print("Distribution OK")
     else:
         print("main invalide --> redistribution")
-
 
 #print(f'Voici la main de {joueurs_saisis[0].nom} : {[(joueurs_saisis[0].main[i]) for i in range(len(joueurs_saisies[0].main))]}')
 #print(f'Voici la main de {joueurs_saisis[1].nom} : {[(joueurs_saisis[1].main[i]) for i in range(len(joueurs_saisies[1].main))]}')
@@ -142,9 +144,14 @@ while partie_en_cours:
         continue
     # j'itère jusqu'à ce qu'on considère que le jour à fait un action
     while peut_jouer:
+
         indice = -1
         while indice<0 or indice > len(j_actif.main)-1:
-            indice = int(input("Donnez l'indice du domino que vous voulez jouer")) - 1
+            saisie = int(input(f"Donnez l'indice du domino que vous voulez jouer (de 1 à {len(j_actif.main)} :"))
+            if type(saisie) == int:
+                indice = int(saisie) - 1
+            else:
+                print("Veuillez entrer un numéro valide.")
 
         cote = ""
         while cote not in ["d", "g"]:
