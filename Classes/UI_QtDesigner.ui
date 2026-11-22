@@ -201,7 +201,7 @@
     <string>COMMENCER</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="name_btn">
+  <widget class="QPushButton" name="ok_btn">
    <property name="geometry">
     <rect>
      <x>810</x>
@@ -261,7 +261,7 @@
     <string>Tour de : &quot;joueur&quot;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_vitctoire">
+  <widget class="QLabel" name="label_victoire">
    <property name="enabled">
     <bool>false</bool>
    </property>
