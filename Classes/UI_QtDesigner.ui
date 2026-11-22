@@ -16,13 +16,16 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
   <widget class="QLabel" name="label_titre">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>70</x>
      <y>20</y>
      <width>421</width>
      <height>111</height>
@@ -54,7 +57,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="d1_btn">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -72,7 +75,7 @@
     <string>DOMINO</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="d2_btn">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -90,7 +93,7 @@
     <string>DOMINO</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="d3_btn">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -108,7 +111,7 @@
     <string>DOMINO</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="d4_btn">
    <property name="geometry">
     <rect>
      <x>440</x>
@@ -126,7 +129,7 @@
     <string>DOMINO</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QPushButton" name="d5_btn">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -144,7 +147,7 @@
     <string>DOMINO</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_6">
+  <widget class="QPushButton" name="d6_btn">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -162,7 +165,7 @@
     <string>DOMINO</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_7">
+  <widget class="QPushButton" name="d7_btn">
    <property name="geometry">
     <rect>
      <x>360</x>
@@ -211,7 +214,7 @@
     <string>OK</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_nom">
+  <widget class="QLabel" name="label_instructions">
    <property name="geometry">
     <rect>
      <x>750</x>
@@ -227,7 +230,7 @@
     <string>Veuillez entrer le nom du joueur _ :</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="lineEdit_console">
    <property name="geometry">
     <rect>
      <x>760</x>
@@ -237,14 +240,19 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_tour">
    <property name="geometry">
     <rect>
-     <x>800</x>
-     <y>400</y>
-     <width>131</width>
-     <height>71</height>
+     <x>620</x>
+     <y>630</y>
+     <width>211</width>
+     <height>111</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="frameShape">
     <enum>QFrame::Box</enum>
@@ -253,14 +261,14 @@
     <string>Tour de : &quot;joueur&quot;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="label_vitctoire">
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>170</y>
+     <x>70</x>
+     <y>160</y>
      <width>451</width>
      <height>131</height>
     </rect>
@@ -275,6 +283,51 @@
    </property>
    <property name="text">
     <string>VICTOIRE DE ....</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_plateau">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>440</y>
+     <width>661</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:white</string>
+   </property>
+   <property name="text">
+    <string>Plateau: </string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>450</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Droite</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>840</x>
+     <y>450</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gauche</string>
    </property>
   </widget>
  </widget>
