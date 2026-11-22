@@ -1,6 +1,13 @@
 import sys
 from PyQt5.QtWidgets import QApplication,QWidget,QLabel,QLineEdit,QPushButton
 
+
+def caca():
+    print("caca")
+
+
+
+
 class MyWindow(QWidget):
     def __init__(self,win):
         super().__init__()
