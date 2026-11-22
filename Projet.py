@@ -11,7 +11,7 @@ while n_joueur not in [2,4]:
 jeu_avec_ia= input("Voulez-vous des IA? ")
 
 if n_joueur == 2:
-    mode = int(input("Veuillez choisir le mode de jeu (7,8,9 ou 10)"))
+    mode = int(input("Veuillez choisir le mode de jeu (7,8,9 ou 10)"))  # Nombre de chiffres possibles (de 0 à mode-1)
     taille_main_depart = mode
 
 if n_joueur == 4:
@@ -120,7 +120,7 @@ while partie_en_cours:
             partie_en_cours = False
 
         n_tour += 1
-        continue
+        continue        # a quoi ca sert ce "continue"  ? - Mayeul
 
     print(f"Tour {n_tour} — C'est au tour de {j_actif.nom}")
     print("Plateau :", plateau)
@@ -129,7 +129,7 @@ while partie_en_cours:
 
     peut_jouer = False
 
-    for i in range(len(j_actif.main)):
+    for i in range(len(j_actif.main)):      # A transformer en fonction de classe ?
         for cote in ["d", "g"]:
             if Domino.posable(j_actif.main[i],plateau,cote):
                 peut_jouer = True
@@ -143,7 +143,7 @@ while partie_en_cours:
             print("Pioche vide : vous passez votre tour")
         n_tour+=1
         continue
-    # j'itère jusqu'à ce qu'on considère que le jour à fait un action
+    # j'itère jusqu'à ce qu'on considère que le joueur à fait un action
     while peut_jouer:
 
         indice = -1
@@ -154,7 +154,7 @@ while partie_en_cours:
                 if indice < 0 or indice > len(j_actif.main) - 1:
                     print(f"Veuillez entrer un numéro entre 1 et {len(j_actif.main)}:")
             except ValueError:
-                print("Saisie invalide : entrez un nombre entier.")
+                print("Saisie invalide : entrez un nombre entier.")         # Paragraphe Fait a l'IA ?
 
         cote = ""
         while cote not in ["d", "g"]:

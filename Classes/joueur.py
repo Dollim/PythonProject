@@ -147,7 +147,7 @@ class Joueur:
     def placer(self,i):
         return(self.main.pop(i))
 
-    #fonction victoire à copléter
+    #fonction victoire à compléter
 
     def victoire(self,plateau, pioche, liste_joueurs):
         if len(self.main)== 0:
