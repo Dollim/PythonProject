@@ -10,11 +10,6 @@ def clear_console():
         print("\n" * 40)
 delai_tour = 0.5
 
-prout="prout"       #tkt je fais mes test et il est tard XD
-def test():
-    global prout
-    print(prout)
-
 def execution():
     n_joueur=0
     while n_joueur not in [2,4]:
