@@ -9,7 +9,7 @@ import os
 def clear_console():
     os.system("cls" if os.name == "nt" else "clear")
 
-delai_tour = 1
+delai_tour = 0.5
 
 prout="prout"       #tkt je fais mes test et il est tard XD
 def test():
@@ -127,7 +127,7 @@ def execution():
 
         if j_actif.est_ia:
             fonction_ia = STRATEGIES_IA[strategie_ia]
-            partie_en_cours = fonction_ia(j_actif, plateau, pioche, liste_joueurs)
+            partie_en_cours = fonction_ia(j_actif, plateau, pioche, liste_joueurs, n_tour)
             n_tour += 1
             continue
 
@@ -159,7 +159,7 @@ def execution():
 
 
 
-        print(f"Tour {n_tour} — C'est au tour de {j_actif.nom} (IA)")
+        print(f"Tour {n_tour} — C'est au tour de {j_actif.nom}")
         time.sleep(delai_tour)
         print("Plateau :", plateau)
         time.sleep(delai_tour)
@@ -202,17 +202,20 @@ def execution():
             cote = ""
             while cote not in ["d", "g"]:
                 cote = input("Où voulez vous le placer (d/g) ?")
+                time.sleep(delai_tour)
 
             if Domino.posable(j_actif.main[indice], plateau, cote):
                 domino = j_actif.placer(indice)
                 plateau.placer(domino, cote)
                 if j_actif.victoire(plateau,pioche,liste_joueurs):
                     print(f"Le joueur {j_actif.nom} a gagné")
+                    time.sleep(delai_tour)
                     partie_en_cours = False
                 n_tour += 1
                 peut_jouer = False
             else:
                 print("ce domino ne peut pas être posé ici")
+                time.sleep(delai_tour)
 
 if __name__=="__main__":
     execution()

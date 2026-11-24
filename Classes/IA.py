@@ -36,15 +36,15 @@ def jouer(joueur, plateau, pioche, liste_joueurs, coup,n_tour):
     return partie_en_cours
 
 
-def ia_random(joueur: Joueur, plateau, pioche, liste_joueurs):
+def ia_random(joueur: Joueur, plateau, pioche, liste_joueurs,n_tour):
     liste_des_coups = Joueur.coups_possibles(joueur, plateau)
     coup = None
     if liste_des_coups:
         indice, cote = random.choice(liste_des_coups)  #oui y'a une fonction choice dans random (pratique !)
         coup = (indice, cote)
-    return jouer(joueur, plateau, pioche, liste_joueurs, coup)
+    return jouer(joueur, plateau, pioche, liste_joueurs, coup,n_tour)
 
-def ia_gloutonne(joueur: Joueur, plateau, pioche, liste_joueurs):
+def ia_gloutonne(joueur: Joueur, plateau, pioche, liste_joueurs,n_tour):
     liste_des_coups = Joueur.coups_possibles(joueur, plateau)
     meilleur_coup = None
     if liste_des_coups:
@@ -56,8 +56,9 @@ def ia_gloutonne(joueur: Joueur, plateau, pioche, liste_joueurs):
             if score > meilleur_score:
                 meilleur_score = score
                 meilleur_coup = coup
-    return jouer(joueur, plateau, pioche, liste_joueurs, meilleur_coup)
+    return jouer(joueur, plateau, pioche, liste_joueurs, meilleur_coup,n_tour)
 
+#POur l'instant que deux stratégies
 STRATEGIES_IA = {
     "gloutonne": ia_gloutonne,
     "random": ia_random
