@@ -1,4 +1,4 @@
-from Classes.IA import IA
+from Classes.IA import*
 from Classes.joueur import Joueur
 from Classes.domino import  Domino
 from Classes.talon import Talon
