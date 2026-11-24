@@ -1,3 +1,4 @@
+from Classes.IA import tour_ia_random
 from Classes.joueur import Joueur
 from Classes.domino import  Domino
 from Classes.talon import Talon
@@ -102,35 +103,41 @@ def execution():
 
         j_actif= liste_joueurs[(n_tour - 1) % n_joueur]
 
-        # je rajoute cette partie là pour si le joueur est une IA
         if j_actif.est_ia:
-            coup = j_actif.choisir_coup_random(plateau)
-
-            if coup is None:
-                print(f"{j_actif.nom} (IA) ne peut pas jouer et pioche.")
-                domino_pioche = pioche.piocher()
-                if domino_pioche is not None:
-                    j_actif.main.append(domino_pioche)
-                else:
-                    print("Pioche vide : l'IA passe son tour")
-                n_tour += 1
-                continue
-
-            indice, cote = coup
-            domino = j_actif.placer(indice)
-            plateau.placer(domino, cote)
-            print(f"{j_actif.nom} (IA) pose {domino} à {'droite' if cote == 'd' else 'gauche'}.")
-
-            if j_actif.victoire(plateau, pioche, liste_joueurs):
-                print(f"Le joueur {j_actif.nom} (IA) a gagné !")
-                partie_en_cours = False
-
+            partie_en_cours = ia_random(j_actif, plateau, pioche, liste_joueurs)
             n_tour += 1
-            continue        # a quoi ca sert ce "continue"  ? - Mayeul en gros il sert à revenir en haut du while, c'est juste de l'efficacité
+            continue
+
+        #je rajoute cette partie là pour si le joueur est une IA
+
+            #coup = j_actif.choisir_coup_random(plateau)
+
+            #if coup is None:
+                #print(f"{j_actif.nom} (IA) ne peut pas jouer et pioche.")
+                #domino_pioche = pioche.piocher()
+                #if domino_pioche is not None:
+                    #j_actif.main.append(domino_pioche)
+                #else:
+                    #print("Pioche vide : l'IA passe son tour")
+                #n_tour += 1
+                #continue
+
+            #indice, cote = coup
+            #domino = j_actif.placer(indice)
+            #plateau.placer(domino, cote)
+            #print(f"{j_actif.nom} (IA) pose {domino} à {'droite' if cote == 'd' else 'gauche'}.")
+
+            #if j_actif.victoire(plateau, pioche, liste_joueurs):
+                #print(f"Le joueur {j_actif.nom} (IA) a gagné !")
+                #partie_en_cours = False
+
+            #n_tour += 1
+            #continue        # a quoi ca sert ce "continue"  ? - Mayeul en gros il sert à revenir en haut du while, c'est juste de l'efficacité
+
+
 
         print(f"Tour {n_tour} — C'est au tour de {j_actif.nom}")
         print("Plateau :", plateau)
-
         print(f"Ta main :{j_actif.main}")
 
         peut_jouer = False
