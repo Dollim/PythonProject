@@ -45,7 +45,7 @@ class Joueur:
                 return False
         return True
 
-    def plus_grand_double(self, mode):
+    def plus_grand_double(self):
         double_max = -1
         for i in range(7):
             if self.est_present(Domino(i, i)) and i > double_max:
