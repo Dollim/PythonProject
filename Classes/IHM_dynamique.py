@@ -1,36 +1,87 @@
 import sys
-import Projet
 from Projet import *
 from PyQt5.QtWidgets import *
 from UI_QtDesigner import Ui_Form
 
 
+class FenetreJeu(QWidget):
 
-class Fenetre(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        Ui_Form.setupUi("interface.ui", self)
+        # Initialisation de l'interface
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
 
-        self.ok_btn.clicked.connect(self.valider)
+        # Variables du jeu
+        self.joueurs = []
+        self.plateau = None
+        self.pioche = None
+        self.liste_joueurs = []
 
-    def valider(self):
-        try:
-            joueurs = int(self.lineEdit_instructions.text())
-        except:
-            pass
-        Projet.prout=joueurs
+        self.n_tour = 1
+        self.indice_domino_selectionne = None
+        self.partie_en_cours = False
 
-        test()
+        # Liste des boutons correspondant aux dominos
+        self.boutons_dominos = [
+            self.ui.d1_btn,
+            self.ui.d2_btn,
+            self.ui.d3_btn,
+            self.ui.d4_btn,
+            self.ui.d5_btn,
+            self.ui.d6_btn,
+            self.ui.d7_btn
+        ]
+
+        # Connexion des boutons
+        self.ui.start_btn.clicked.connect(self.demarrer_partie)
+
+        for i, bouton in enumerate(self.boutons_dominos):
+            bouton.clicked.connect(
+                lambda checked=False, indice=i:
+                    self.selectionner_domino(indice)
+            )
+
+        self.ui.pushButton.clicked.connect(
+            lambda: self.jouer_domino("d")
+        )
+
+        self.ui.pushButton_2.clicked.connect(
+            lambda: self.jouer_domino("g")
+        )
+
+        self.ui.ok_btn.clicked.connect(self.valider_saisie)
+
+        self.ui.label_victoire.hide()
+
+    def demarrer_partie(self):
+        pass
+
+    def valider_saisie(self):
+        pass
+
+    def afficher_tour(self):
+        pass
+
+    def afficher_main(self):
+        pass
+
+    def selectionner_domino(self, indice):
+        pass
+
+    def jouer_domino(self, cote):
+        pass
+
+    def actualiser_plateau(self):
+        pass
 
 
-
-
-
-app = QApplication(sys.argv)
-window=Fenetre()
-window.show()
-sys.exit(app.exec_())
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    win = FenetreJeu()
+    win.show()
+    sys.exit(app.exec_())
 
 
 

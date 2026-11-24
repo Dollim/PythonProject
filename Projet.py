@@ -3,10 +3,6 @@ from Classes.domino import  Domino
 from Classes.talon import Talon
 from Classes.plateau import Plateau
 
-prout="prout"       #tkt je fais mes test et il est tard XD
-def test():
-    global prout
-    print(prout)
 
 def execution():
     n_joueur=0
