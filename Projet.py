@@ -6,8 +6,7 @@ from Classes.plateau import Plateau
 import time
 import os
 
-def clear_console():
-        print("\n" * 40)
+
 delai_tour = 0.5
 
 def execution():
@@ -90,7 +89,7 @@ def execution():
 
     while partie_en_cours:
 
-        clear_console()
+
         time.sleep(delai_tour)
 
         print("\n" + "-" * 40)

@@ -33,6 +33,7 @@ def jouer(joueur, plateau, pioche, liste_joueurs, coup,n_tour):
         print(f"Le joueur {joueur.nom} (IA) a gagné")
         partie_en_cours = False
 
+    time.sleep(3)
     return partie_en_cours
 
 
