@@ -173,7 +173,9 @@ class Joueur:
                 return True
         return False
 
-    def choisir_coup_random(self, plateau):
+#bon je vais modifier celle-là en coups-possible, commme ça je sépare les versions d'IA et c'est plus simple
+
+    def coups_possibles(self, plateau):
         coups_possibles = []
 
         for i in range(len(self.main)):
@@ -184,7 +186,7 @@ class Joueur:
         if not coups_possibles:
             return None
 
-        return random.choice(coups_possibles)
+        return coups_possibles
 
 
 

@@ -126,7 +126,7 @@ def execution():
                 partie_en_cours = False
 
             n_tour += 1
-            continue        # a quoi ca sert ce "continue"  ? - Mayeul
+            continue        # a quoi ca sert ce "continue"  ? - Mayeul en gros il sert à revenir en haut du while, c'est juste de l'efficacité
 
         print(f"Tour {n_tour} — C'est au tour de {j_actif.nom}")
         print("Plateau :", plateau)
