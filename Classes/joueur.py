@@ -47,7 +47,7 @@ class Joueur:
 
     ### Test Désolé Aimelien
 
-    ###def plus_grand_double(self):
+    #def plus_grand_double(self):
         double_max = -1
         for i in range(7):
             if self.est_present(Domino(i, i)) and i > double_max:
@@ -107,7 +107,7 @@ class Joueur:
                 j2.ordre = 1
                 return j2.score_max(mode)[1]
 
-    #def attribution_ordre(self, liste_joueurs, mode):
+    def attribution_ordre(self, liste_joueurs, mode):
 
         if type(liste_joueurs) is not list:
             liste_joueurs = [self, liste_joueurs]
@@ -154,7 +154,7 @@ class Joueur:
 
     #### TEMPORAIRE DSL AIMELIEN
 
-    def attribution_ordre(self, liste_joueurs, mode):
+    #def attribution_ordre(self, liste_joueurs, mode):
 
         print("A1 : début attribution_ordre", flush=True)
 

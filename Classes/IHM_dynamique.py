@@ -1,4 +1,4 @@
-"""import sys
+import sys
 from Projet import *
 from PyQt5.QtWidgets import *
 from UI_QtDesigner import Ui_Form

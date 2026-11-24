@@ -7,7 +7,7 @@ import time
 import os
 
 
-delai_tour = 0.5
+delai_tour = 0.2
 
 def execution():
     n_joueur=0
