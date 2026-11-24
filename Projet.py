@@ -7,8 +7,7 @@ import time
 import os
 
 def clear_console():
-    os.system("cls" if os.name == "nt" else "clear")
-
+        print("\n" * 40)
 delai_tour = 0.5
 
 prout="prout"       #tkt je fais mes test et il est tard XD
