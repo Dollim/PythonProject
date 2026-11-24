@@ -45,13 +45,27 @@ class Joueur:
                 return False
         return True
 
-    def plus_grand_double(self):
+    ### Test Désolé Aimelien
+
+    ###def plus_grand_double(self):
         double_max = -1
         for i in range(7):
             if self.est_present(Domino(i, i)) and i > double_max:
                 double_max = i
         if double_max == -1:
             return None
+        return double_max, Domino(double_max, double_max)
+
+    def plus_grand_double(self, mode):
+        double_max = -1
+
+        for i in range(mode):
+            if self.est_present(Domino(i, i)) and i > double_max:
+                double_max = i
+
+        if double_max == -1:
+            return None
+
         return double_max, Domino(double_max, double_max)
 
     def score_max(self,mode):
@@ -93,7 +107,7 @@ class Joueur:
                 j2.ordre = 1
                 return j2.score_max(mode)[1]
 
-    def attribution_ordre(self, liste_joueurs, mode):
+    #def attribution_ordre(self, liste_joueurs, mode):
 
         if type(liste_joueurs) is not list:
             liste_joueurs = [self, liste_joueurs]
@@ -128,13 +142,80 @@ class Joueur:
 
         indice_du_premier = 0
         for i in range(len(liste_joueurs)):
-            if liste_joueurs[i] == premier:
+            if liste_joueurs[i] is premier:
                 indice_du_premier = i
         n = len(liste_joueurs)
 
         for i in range(n):
             joueur_courant = liste_joueurs[(indice_du_premier + i) % n]
             joueur_courant.ordre = i + 1
+
+        return domino_depart
+
+    #### TEMPORAIRE DSL AIMELIEN
+
+    def attribution_ordre(self, liste_joueurs, mode):
+
+        print("A1 : début attribution_ordre", flush=True)
+
+        meilleur_double_val = -1
+        gagnant_double = None
+        domino_double = None
+
+        for j in liste_joueurs:
+            print("A2 : recherche double de", j.nom, flush=True)
+
+            d = j.plus_grand_double(mode)
+
+            print("A3 : résultat double =", d, flush=True)
+
+            if d is not None and d[0] > meilleur_double_val:
+                meilleur_double_val = d[0]
+                gagnant_double = j
+                domino_double = d[1]
+
+        print("A4 : recherche du premier joueur", flush=True)
+
+        if gagnant_double is not None:
+            premier = gagnant_double
+            domino_depart = domino_double
+
+        else:
+            meilleur_score_val = -1
+            premier = liste_joueurs[0]
+            domino_depart = None
+
+            for j in liste_joueurs:
+                print("A5 : score de", j.nom, flush=True)
+
+                s = j.score_max(mode)
+
+                print("A6 : résultat score =", s, flush=True)
+
+                if s is not None and s[0] > meilleur_score_val:
+                    meilleur_score_val = s[0]
+                    premier = j
+                    domino_depart = s[1]
+
+        print("A7 : recherche indice", flush=True)
+
+        indice_du_premier = 0
+
+        for i in range(len(liste_joueurs)):
+            if liste_joueurs[i] is premier:
+                indice_du_premier = i
+
+        print("A8 : attribution des ordres", flush=True)
+
+        n = len(liste_joueurs)
+
+        for i in range(n):
+            joueur_courant = liste_joueurs[
+                (indice_du_premier + i) % n
+                ]
+            joueur_courant.ordre = i + 1
+
+        print("A9 : terminé", flush=True)
 
         return domino_depart
 
