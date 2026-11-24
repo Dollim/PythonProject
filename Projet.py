@@ -1,4 +1,4 @@
-from Classes.IA import tour_ia_random
+from Classes.IA import IA
 from Classes.joueur import Joueur
 from Classes.domino import  Domino
 from Classes.talon import Talon
