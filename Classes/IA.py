@@ -1,9 +1,11 @@
 from Classes.joueur import*
+import time
 
+delai_tour = 0.5
 #je sépare bien l'IA de projet car on prévoit d'en faire plusieurs
 
 
-def jouer(joueur: Joueur, plateau, pioche, liste_joueurs, coup):
+def jouer(joueur, plateau, pioche, liste_joueurs, coup,n_tour):
 
     partie_en_cours = True
 
@@ -16,6 +18,12 @@ def jouer(joueur: Joueur, plateau, pioche, liste_joueurs, coup):
             print("pioche vide : l'IA passe son tour")
         return partie_en_cours
 
+    print(f"Tour {n_tour} — C'est au tour de {joueur.nom} (IA)")
+    time.sleep(delai_tour)
+    print("Plateau :", plateau)
+    time.sleep(delai_tour)
+    print(f"main de l'IA :{joueur.main}")
+    time.sleep(delai_tour)
     indice, cote = coup
     domino = joueur.placer(indice)
     plateau.placer(domino, cote)

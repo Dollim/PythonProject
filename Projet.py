@@ -3,6 +3,13 @@ from Classes.joueur import Joueur
 from Classes.domino import  Domino
 from Classes.talon import Talon
 from Classes.plateau import Plateau
+import time
+import os
+
+def clear_console():
+    os.system("cls" if os.name == "nt" else "clear")
+
+delai_tour = 1
 
 prout="prout"       #tkt je fais mes test et il est tard XD
 def test():
@@ -16,6 +23,16 @@ def execution():
         if n_joueur not in [2,4]:
             print("mode de jeu indisponible")
     jeu_avec_ia= input("Voulez-vous des IA? ")
+
+    strategie_ia = "gloutonne"
+    if jeu_avec_ia in ("o", "oui"):
+        choix_ia = ""
+        while choix_ia not in ("1", "2"):
+            print("Choisissez le mode de IA :")
+            print(" 1-IA gloutonne ")
+            print(" 2-IA random ")
+            choix_ia = input("Votre choix (1 ou 2) : ")
+        strategie_ia = "gloutonne" if choix_ia == "1" else "random"
 
     if n_joueur == 2:
         mode = int(input("Veuillez choisir le mode de jeu (7,8,9 ou 10)"))  # Nombre de chiffres possibles (de 0 à mode-1)
@@ -78,7 +95,12 @@ def execution():
 
 
     while partie_en_cours:
+
+        clear_console()
+        time.sleep(delai_tour)
+
         print("\n" + "-" * 40)
+        time.sleep(delai_tour)
 
         if n_tour == 1:
             j_actif = liste_joueurs[0]
@@ -104,7 +126,8 @@ def execution():
         j_actif= liste_joueurs[(n_tour - 1) % n_joueur]
 
         if j_actif.est_ia:
-            partie_en_cours = ia_random(j_actif, plateau, pioche, liste_joueurs)
+            fonction_ia = STRATEGIES_IA[strategie_ia]
+            partie_en_cours = fonction_ia(j_actif, plateau, pioche, liste_joueurs)
             n_tour += 1
             continue
 
@@ -136,9 +159,12 @@ def execution():
 
 
 
-        print(f"Tour {n_tour} — C'est au tour de {j_actif.nom}")
+        print(f"Tour {n_tour} — C'est au tour de {j_actif.nom} (IA)")
+        time.sleep(delai_tour)
         print("Plateau :", plateau)
+        time.sleep(delai_tour)
         print(f"Ta main :{j_actif.main}")
+        time.sleep(delai_tour)
 
         peut_jouer = False
 
@@ -149,11 +175,13 @@ def execution():
 
         if peut_jouer == False:
             print("Vous ne pouvez pas poser de domino, vous devez piocher")
+            time.sleep(delai_tour)
             domino_pioche = Talon.piocher(pioche)
             if domino_pioche is not None:
                 j_actif.main.append(domino_pioche)
             else:
                 print("Pioche vide : vous passez votre tour")
+                time.sleep(delai_tour)
             n_tour+=1
             continue
         # j'itère jusqu'à ce qu'on considère que le joueur à fait un action
@@ -166,8 +194,10 @@ def execution():
                     indice = saisie - 1
                     if indice < 0 or indice > len(j_actif.main) - 1:
                         print(f"Veuillez entrer un numéro entre 1 et {len(j_actif.main)}:")
+                        time.sleep(delai_tour)
                 except ValueError:
-                    print("Saisie invalide : entrez un nombre entier.")         # Paragraphe Fait a l'IA ?
+                    print("Saisie invalide : entrez un nombre entier.")
+                    time.sleep(delai_tour)
 
             cote = ""
             while cote not in ["d", "g"]:
